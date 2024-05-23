@@ -7,24 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B12079CB2BFEEBF700BA98C6 /* CandidateForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CA2BFEEBF700BA98C6 /* CandidateForm.swift */; };
+		B12079CD2BFEEC1100BA98C6 /* EmployerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CC2BFEEC1100BA98C6 /* EmployerForm.swift */; };
+		B12079CF2BFEEC3800BA98C6 /* ViewerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */; };
 		B1F9520C2BFCB520007FF50E /* CJN_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9520B2BFCB520007FF50E /* CJN_iOSApp.swift */; };
 		B1F9520E2BFCB520007FF50E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9520D2BFCB520007FF50E /* LoginView.swift */; };
 		B1F952102BFCB522007FF50E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F9520F2BFCB522007FF50E /* Assets.xcassets */; };
 		B1F952132BFCB522007FF50E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F952122BFCB522007FF50E /* Preview Assets.xcassets */; };
-		B1F9521D2BFCBD7B007FF50E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9521C2BFCBD7B007FF50E /* ViewModel.swift */; };
+		B1F9521D2BFCBD7B007FF50E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9521C2BFCBD7B007FF50E /* LoginViewModel.swift */; };
 		B1F9521F2BFCCA4D007FF50E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */; };
-		B1F952212BFCDAB8007FF50E /* Style+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F952202BFCDAB8007FF50E /* Style+Ext.swift */; };
+		B1F952232BFDA0B5007FF50E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F952222BFDA0B5007FF50E /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B12079CA2BFEEBF700BA98C6 /* CandidateForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateForm.swift; sourceTree = "<group>"; };
+		B12079CC2BFEEC1100BA98C6 /* EmployerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerForm.swift; sourceTree = "<group>"; };
+		B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerForm.swift; sourceTree = "<group>"; };
 		B1F952082BFCB520007FF50E /* CJN_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJN_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F9520B2BFCB520007FF50E /* CJN_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJN_iOSApp.swift; sourceTree = "<group>"; };
 		B1F9520D2BFCB520007FF50E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B1F9520F2BFCB522007FF50E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1F952122BFCB522007FF50E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B1F9521C2BFCBD7B007FF50E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B1F9521C2BFCBD7B007FF50E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
-		B1F952202BFCDAB8007FF50E /* Style+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Style+Ext.swift"; sourceTree = "<group>"; };
+		B1F952222BFDA0B5007FF50E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +44,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B12079C82BFE1E1E00BA98C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B1F952222BFDA0B5007FF50E /* RegistrationViewModel.swift */,
+				B1F9521C2BFCBD7B007FF50E /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B12079C92BFEEB3400BA98C6 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				B12079CA2BFEEBF700BA98C6 /* CandidateForm.swift */,
+				B12079CC2BFEEC1100BA98C6 /* EmployerForm.swift */,
+				B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
 		B1F951FF2BFCB520007FF50E = {
 			isa = PBXGroup;
 			children = (
@@ -59,9 +84,6 @@
 			children = (
 				B1F952192BFCBD22007FF50E /* Core */,
 				B1F9520B2BFCB520007FF50E /* CJN_iOSApp.swift */,
-				B1F9520D2BFCB520007FF50E /* LoginView.swift */,
-				B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */,
-				B1F9521C2BFCBD7B007FF50E /* ViewModel.swift */,
 				B1F9520F2BFCB522007FF50E /* Assets.xcassets */,
 				B1F952112BFCB522007FF50E /* Preview Content */,
 			);
@@ -80,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				B1F9521A2BFCBD30007FF50E /* Authentication */,
-				B1F952202BFCDAB8007FF50E /* Style+Ext.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -88,6 +109,7 @@
 		B1F9521A2BFCBD30007FF50E /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				B12079C82BFE1E1E00BA98C6 /* ViewModel */,
 				B1F9521B2BFCBD44007FF50E /* Views */,
 			);
 			path = Authentication;
@@ -96,6 +118,9 @@
 		B1F9521B2BFCBD44007FF50E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B1F9520D2BFCB520007FF50E /* LoginView.swift */,
+				B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */,
+				B12079C92BFEEB3400BA98C6 /* Forms */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,9 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F952212BFCDAB8007FF50E /* Style+Ext.swift in Sources */,
 				B1F9520E2BFCB520007FF50E /* LoginView.swift in Sources */,
-				B1F9521D2BFCBD7B007FF50E /* ViewModel.swift in Sources */,
+				B12079CF2BFEEC3800BA98C6 /* ViewerForm.swift in Sources */,
+				B12079CB2BFEEBF700BA98C6 /* CandidateForm.swift in Sources */,
+				B12079CD2BFEEC1100BA98C6 /* EmployerForm.swift in Sources */,
+				B1F9521D2BFCBD7B007FF50E /* LoginViewModel.swift in Sources */,
+				B1F952232BFDA0B5007FF50E /* RegistrationViewModel.swift in Sources */,
 				B1F9520C2BFCB520007FF50E /* CJN_iOSApp.swift in Sources */,
 				B1F9521F2BFCCA4D007FF50E /* RegistrationView.swift in Sources */,
 			);
