@@ -20,50 +20,43 @@ enum UserType: Int, Codable {
 }
 
 class LoginViewModel: ObservableObject {
+    @Published var email = ""
+    @Published var password = ""
+    @Published var errorMessage = ""
+    @Published var loginResponse = LoginResponse(responseMessage: "", responseStatus: false)
     
+    init(email: String = "", password: String = "", errorMessage: String = "", loginResponse: LoginResponse) {
+        self.email = email
+        self.password = password
+        self.errorMessage = errorMessage
+        self.loginResponse = loginResponse
+    }
     private let loginURL = URL(string: "https://dev.cjnnow.com/api/login_usertype")!
     
-    func login(email: String, password: String, type: Int, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
-        
-        let payload: [String: AnyHashable] = ["email": email, "password": password, "type": type]
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: .fragmentsAllowed) else {
-            print("Failed to serialize JSON")
-            return
-        }
-        
-        var request = URLRequest(url: loginURL)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("987654321", forHTTPHeaderField: "apikey")
-        request.httpBody = jsonData
-        
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-                return
-            }
+    func login( type : Int ) async {
             
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
-                }
-                return
-            }
+            let payload: [String: AnyHashable] = ["email": email, "password": password, "type": type]
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: .fragmentsAllowed) else {
+                   print("Failed to serialize JSON")
+                   return
+               }
             
-            do {
-                let response = try JSONDecoder().decode(LoginResponse.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(response))
+            var request = URLRequest(url: loginURL)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.setValue("987654321", forHTTPHeaderField: "apikey")
+                request.httpBody = jsonData
+            
+                do {
+                    let (data, _) = try await URLSession.shared.data(for: request)
+                    let response = try JSONDecoder().decode(LoginResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.loginResponse = response
+                    }
+                } catch {
+                    print("Error: \(error)")
                 }
-               
-            } catch {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
+           
+           
         }
-        task.resume()
-    }
 }

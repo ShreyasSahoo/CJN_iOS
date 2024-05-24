@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct ViewerForm: View {
-    @Binding var viewerName: String
-    @Binding var viewerEmail: String
-    @Binding var viewerPassword: String
-    @Binding var viewerPhone: String
-    @Binding var selectedPhoneCode: String
+//    @Binding var viewerName: String
+//    @Binding var viewerEmail: String
+//    @Binding var viewerPassword: String
+//    @Binding var viewerPhone: String
+//    @Binding var selectedPhoneCode: String
+   
     let phoneCodes: [String]
-    
+    @ObservedObject var registrationViewModel: RegistrationViewModel
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Viewer Information")) { // Add a header for the section
-                    TextFieldWithLabel(label: "Username", placeholder: "Please enter the viewer username *", text: $viewerName)
-                    TextFieldWithLabel(label: "Email", placeholder: "Please enter the viewer email *", text: $viewerEmail)
-                    SecureFieldWithLabel(label: "Password", placeholder: "Please enter the viewer password *", text: $viewerPassword)
-                    PhoneFieldWithLabel(label: "Phone Number", placeholder: "Phone Number", phone: $viewerPhone, selectedPhoneCode: $selectedPhoneCode, phoneCodes: phoneCodes)
+                    TextFieldWithLabel(label: "Name", placeholder: "Please enter the your name ", text: $registrationViewModel.viewerName)
+                    TextFieldWithLabel(label: "Email", placeholder: "Please enter the viewer email *", text: $registrationViewModel.viewerEmail)
+                    SecureFieldWithLabel(label: "Password", placeholder: "Please enter the viewer password *", text: $registrationViewModel.viewerPass)
+                    PhoneFieldWithLabel(label: "Phone Number", placeholder: "Phone Number", phone: $registrationViewModel.viewerPhone , selectedPhoneCode: $registrationViewModel.viewerCountryCode, phoneCodes: phoneCodes)
                 }
             }
             .formStyle(.grouped)

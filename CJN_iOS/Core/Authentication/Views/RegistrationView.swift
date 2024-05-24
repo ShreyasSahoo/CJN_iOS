@@ -34,11 +34,11 @@ struct RegistrationView: View {
     @State  var employerPassword = ""
     @State  var employerExperience = ""
     
-    @State  var viewerName = ""
-    @State  var viewerEmail = ""
-    @State  var viewerPassword = ""
-    @State  var viewerPhone: String = ""
-    @State  var selectedPhoneCode: String = ""
+//    @State  var viewerName = ""
+//    @State  var viewerEmail = ""
+//    @State  var viewerPassword = ""
+//    @State  var viewerPhone: String = ""
+//    @State  var selectedPhoneCode: String = ""
 
     
     let phoneCodes = [
@@ -90,7 +90,7 @@ struct RegistrationView: View {
                             EmployerForm(employerName: $employerName, employerEmail: $employerEmail, companyName: $companyName, postName: $postName, employerPhone: $employerPhone, employerSelectedPhoneCode: $employerSelectedPhoneCode, employerPassword: $employerPassword, employerExperience: $employerExperience, phoneCodes: phoneCodes)
                                 .frame(minHeight:geo.size.height*0.7)
                         } else if selectedUserType == "Viewer" {
-                            ViewerForm(viewerName: $viewerName, viewerEmail: $viewerEmail, viewerPassword: $viewerPassword, viewerPhone: $viewerPhone, selectedPhoneCode: $selectedPhoneCode, phoneCodes: phoneCodes)
+                            ViewerForm(phoneCodes: phoneCodes, registrationViewModel: registrationViewModel)
                                 .frame(minHeight:geo.size.height*0.7)
                             
                             
@@ -153,21 +153,20 @@ struct RegistrationView: View {
         employerPassword = ""
         employerExperience = ""
 
-        viewerName = ""
-        viewerPhone = ""
-        viewerEmail = ""
-        viewerPassword = ""
-        selectedPhoneCode = ""
+//        viewerName = ""
+//        viewerPhone = ""
+//        viewerEmail = ""
+//        viewerPassword = ""
+//        selectedPhoneCode = ""
     }
 
 
     private func registerUser() {
         if selectedUserType == "Viewer"{
-            print("Viewer")
-            registrationViewModel.registerViewer(name: viewerName, email: viewerEmail, countryCode: selectedPhoneCode, phone: viewerPhone, viewerPass: viewerPassword)
+            registrationViewModel.registerViewer()
         }
         else if selectedUserType == "Employer" {
-            registrationViewModel.registerEmployer(name: employerName, email: employerEmail, companyName: companyName, postName: postName, countryCode: employerSelectedPhoneCode, phone: employerPhone, employerPass: employerPassword, yearsOfExperience: Int(employerExperience)!)
+            registrationViewModel.registerEmployer(name: employerName, email: employerEmail, companyName: companyName, postName: postName, countryCode: employerSelectedPhoneCode, phone: employerPhone, employerPass: employerPassword, yearsOfExperience: Int(employerExperience) ?? 0)
         }
         else if selectedUserType == "Candidate" {
             registrationViewModel.registerCandidate(

@@ -7,16 +7,38 @@
 
 import Foundation
 
+struct RegistrationResponse {
+    
+    let responseMessage : ResponseMessage
+    let responseStatus : Bool
+    
+    struct ResponseMessage {
+        
+        let viewerEmail : String
+        let viewerName : String
+        let viewerPass : String
+        let viewerPhone : Int
+    }
+}
 
 class RegistrationViewModel: ObservableObject {
-
+    
+    @Published var viewerName : String = ""
+    @Published var viewerEmail : String = ""
+    @Published var viewerCountryCode : String = ""
+    @Published var viewerPhone : String = ""
+    @Published var viewerPass : String = ""
+    
     private let candidateURL = URL(string: "https://dev.cjnnow.com/api/create_candidate_profile")!
     private let employerURL = URL(string: "https://dev.cjnnow.com/api/add_employer")!
     private let viewerURL = URL(string: "https://dev.cjnnow.com/api/add_viewer")!
 
-    func registerViewer(name: String, email: String, countryCode: String, phone: String, viewerPass: String) {
-
-        let payload: [String: AnyHashable] = ["viewer_name": name, "country_code": countryCode, "viewer_phone": phone, "viewer_email": email, "viewer_pass": viewerPass]
+    init(){
+        
+    }
+    func registerViewer() {
+        
+        let payload: [String: AnyHashable] = ["viewer_name": viewerName, "country_code": viewerCountryCode, "viewer_phone": viewerPhone, "viewer_email": viewerEmail, "viewer_pass": viewerPass]
 
         // Serialize the JSON payload
         guard let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: .fragmentsAllowed) else {

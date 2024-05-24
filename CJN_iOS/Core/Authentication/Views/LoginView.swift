@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject private var loginViewModel = LoginViewModel(loginResponse: LoginResponse(responseMessage: "", responseStatus: false))
     @State private var userType : UserType = .candidate
-    @State private var email = ""
-    @State private var password = ""
     @State private var rememberMe = false
     @State private var showInvalidParams = false
     @State private var isPasswordVisible: Bool = false
-    @State private var loginResponse: LoginResponse?
-    @State private var errorMessage: String?
+
+//    @State private var errorMessage: String?
     @State private var showLoginSuccess  = false
-    @State private var showLoginError  = false
-    @State private var loginErrorMessage = ""
+//    @State private var showLoginError  = false
+//    @State private var loginErrorMessage = ""
     var body: some View {
         
         NavigationStack {
@@ -53,7 +51,7 @@ struct LoginView: View {
                     VStack(alignment:.leading){
                         Text("Email Address")
                         
-                        TextField("Enter a valid email address", text: $email)
+                        TextField("Enter a valid email address", text: $loginViewModel.email)
                         .textInputAutocapitalization(.never)
                             .padding()
                             .background(Color(UIColor.systemGray6))
@@ -67,7 +65,7 @@ struct LoginView: View {
                         HStack {
                             ZStack {
                                 
-                                TextField("Enter password", text: $password)
+                                TextField("Enter password", text: $loginViewModel.password)
                                     .textInputAutocapitalization(.never)
                                     .padding()
                                     .background(Color(UIColor.systemGray6))
@@ -75,7 +73,7 @@ struct LoginView: View {
                                     .frame(height: 44)
                                     .opacity(isPasswordVisible ? 1 : 0)
                                 
-                                SecureField("Enter password", text: $password)
+                                SecureField("Enter password", text: $loginViewModel.password)
                                     .textInputAutocapitalization(.never)
                                     .padding()
                                     .background(Color(UIColor.systemGray6))
@@ -115,32 +113,17 @@ struct LoginView: View {
 //                            .padding(.vertical)
 
                         Button {
-                            if email=="" || password == "" || userType.rawValue == -1 {
+                            if loginViewModel.email=="" || loginViewModel.password == "" || userType.rawValue == -1 {
                                 showInvalidParams = true
                                 return
                             }
                             else{
-                                loginViewModel.login(email: email, password: password, type: userType.rawValue) { result in
-                                                    switch result {
-                                                    case .success(let response):
-                                                        self.loginResponse = response
-                                                        self.errorMessage = nil
-                                                    case .failure(let error):
-                                                        self.loginResponse = nil
-                                                        self.errorMessage = error.localizedDescription
-                                                    }
-                                                }
-                                guard let loginResponse = loginResponse else {
-                                    print("\(String(describing: errorMessage))")
-                                    return
-                                }
-                                if loginResponse.responseStatus {
+                                Task {
+                                    await loginViewModel.login( type: userType.rawValue)
                                     showLoginSuccess = true
-                                } else {
-                                    showLoginError = true
-                                    errorMessage = loginResponse.responseMessage
-                                }
-                                
+                                    print(loginViewModel.loginResponse)
+                                               }
+                               
                             }
                          
                         } label: {
@@ -217,7 +200,7 @@ struct LoginView: View {
                 .sheet(isPresented: $showLoginSuccess, content: {
                     Text("login successful")
                 })
-                
+                 
             }
         }
     }
