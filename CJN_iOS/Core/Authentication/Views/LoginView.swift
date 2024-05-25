@@ -35,7 +35,7 @@ struct LoginView: View {
                         Text("User Login")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(.accentColor)
                             .padding(.bottom, 10)
 
                         Picker("Select User Type", selection: $userType) {
@@ -128,10 +128,12 @@ struct LoginView: View {
                          
                         } label: {
                             Text("Login")
+                                .fontWeight(.semibold)
+                                .font(.title3)
                                 .foregroundColor(.white)
                                 .padding()
                                 .frame(maxWidth: .infinity)
-                                .background(Color.blue)
+                                .background(Color.accentColor)
                                 .cornerRadius(8)
                         }
                         .padding(.top, 10)
@@ -190,18 +192,20 @@ struct LoginView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                         }
+                        
                     }
                 }
                 .padding(.bottom, 5)
-                .alert(isPresented: $showInvalidParams) {
-                    Alert(title: Text("Important message"), message: Text("Please enter all the required fields"), dismissButton: .default(Text("Got it!")))
-                        
-                        }
-                .sheet(isPresented: $showLoginSuccess, content: {
-                    Text("login successful")
-                })
-                 
+                
+                NavigationLink(destination: UserDashView(), isActive:  $showLoginSuccess) {
+                                EmptyView()
+                            }
+                
             }
+            .alert(isPresented: $showInvalidParams) {
+                Alert(title: Text("Important message"), message: Text("Please enter all the required fields"), dismissButton: .default(Text("Got it!")))
+                    
+                    }
         }
     }
 }

@@ -36,29 +36,35 @@ class RegistrationViewModel: ObservableObject {
     init(){
         
     }
-    func registerViewer() {
+    func registerViewer()  {
         
         let payload: [String: AnyHashable] = ["viewer_name": viewerName, "country_code": viewerCountryCode, "viewer_phone": viewerPhone, "viewer_email": viewerEmail, "viewer_pass": viewerPass]
 
-        // Serialize the JSON payload
+        
         guard let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: .fragmentsAllowed) else {
             print("Failed to serialize JSON")
             return
         }
 
-        // Print the serialized JSON data
-        print("Serialized JSON Data: \(String(describing: String(data: jsonData, encoding: .utf8)))")
 
-    
-
-        // Create and configure the URL request
         var request = URLRequest(url: viewerURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("987654321", forHTTPHeaderField: "apikey")
         request.httpBody = jsonData
-
-        // Execute the URL request
+//
+//        do {
+//            let (data, _) = try await URLSession.shared.data(for: request)
+//            
+//                let responseObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+//                print("\(responseObject)")
+//           
+//        } catch {
+//            print(error)
+//        }
+//        
+        
+//         Execute the URL request
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
 
             // Check for errors in the response

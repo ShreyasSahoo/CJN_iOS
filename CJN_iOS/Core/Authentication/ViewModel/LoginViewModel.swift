@@ -48,8 +48,9 @@ class LoginViewModel: ObservableObject {
                 request.httpBody = jsonData
             
                 do {
-                    let (data, _) = try await URLSession.shared.data(for: request)
+                    let (data, res) = try await URLSession.shared.data(for: request)
                     let response = try JSONDecoder().decode(LoginResponse.self, from: data)
+                    print("response \(res)")
                     DispatchQueue.main.async {
                         self.loginResponse = response
                     }

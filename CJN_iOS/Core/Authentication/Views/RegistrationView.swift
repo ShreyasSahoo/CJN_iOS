@@ -110,7 +110,9 @@ struct RegistrationView: View {
                             
                             Button(action: {
                                 
-                                registerUser()
+                                    registerUser()
+                                
+                              
                             }) {
                                 Text("Register")
                                     .frame(maxWidth: .infinity)
@@ -161,9 +163,12 @@ struct RegistrationView: View {
     }
 
 
-    private func registerUser() {
+    private func registerUser()  {
         if selectedUserType == "Viewer"{
-            registrationViewModel.registerViewer()
+            
+         registrationViewModel.registerViewer()
+            
+            
         }
         else if selectedUserType == "Employer" {
             registrationViewModel.registerEmployer(name: employerName, email: employerEmail, companyName: companyName, postName: postName, countryCode: employerSelectedPhoneCode, phone: employerPhone, employerPass: employerPassword, yearsOfExperience: Int(employerExperience) ?? 0)

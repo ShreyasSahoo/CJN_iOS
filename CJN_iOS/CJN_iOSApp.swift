@@ -1,3 +1,4 @@
+
 //
 //  CJN_iOSApp.swift
 //  CJN_iOS
@@ -11,7 +12,30 @@ import SwiftUI
 struct CJN_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            ContentView()
         }
     }
 }
+
+struct ContentView: View {
+    @State private var showSplash = true
+
+    var body: some View {
+        Group {
+            if showSplash {
+                SplashScreenView()
+                    .onAppear {
+                        // Transition after 2 seconds
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            withAnimation {
+                                showSplash = false
+                            }
+                        }
+                    }
+            } else {
+                LoginView()
+            }
+        }
+    }
+}
+

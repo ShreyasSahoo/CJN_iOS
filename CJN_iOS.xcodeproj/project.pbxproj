@@ -10,7 +10,10 @@
 		B12079CB2BFEEBF700BA98C6 /* CandidateForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CA2BFEEBF700BA98C6 /* CandidateForm.swift */; };
 		B12079CD2BFEEC1100BA98C6 /* EmployerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CC2BFEEC1100BA98C6 /* EmployerForm.swift */; };
 		B12079CF2BFEEC3800BA98C6 /* ViewerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */; };
-		B1F9520C2BFCB520007FF50E /* CJN_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9520B2BFCB520007FF50E /* CJN_iOSApp.swift */; };
+		B1B44EC82C01A5F900D6B631 /* UserDashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B44EC72C01A5F900D6B631 /* UserDashView.swift */; };
+		B1B44ECB2C01AD1300D6B631 /* LiveShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */; };
+		B1B44ECD2C01E3D300D6B631 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B44ECC2C01E3D300D6B631 /* SplashScreenView.swift */; };
+		B1F57B312C0220B900420125 /* CJN_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F57B302C0220B900420125 /* CJN_iOSApp.swift */; };
 		B1F9520E2BFCB520007FF50E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9520D2BFCB520007FF50E /* LoginView.swift */; };
 		B1F952102BFCB522007FF50E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F9520F2BFCB522007FF50E /* Assets.xcassets */; };
 		B1F952132BFCB522007FF50E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F952122BFCB522007FF50E /* Preview Assets.xcassets */; };
@@ -23,8 +26,11 @@
 		B12079CA2BFEEBF700BA98C6 /* CandidateForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateForm.swift; sourceTree = "<group>"; };
 		B12079CC2BFEEC1100BA98C6 /* EmployerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerForm.swift; sourceTree = "<group>"; };
 		B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerForm.swift; sourceTree = "<group>"; };
+		B1B44EC72C01A5F900D6B631 /* UserDashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDashView.swift; sourceTree = "<group>"; };
+		B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveShowView.swift; sourceTree = "<group>"; };
+		B1B44ECC2C01E3D300D6B631 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		B1F57B302C0220B900420125 /* CJN_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJN_iOSApp.swift; sourceTree = "<group>"; };
 		B1F952082BFCB520007FF50E /* CJN_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJN_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F9520B2BFCB520007FF50E /* CJN_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJN_iOSApp.swift; sourceTree = "<group>"; };
 		B1F9520D2BFCB520007FF50E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B1F9520F2BFCB522007FF50E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1F952122BFCB522007FF50E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -63,6 +69,22 @@
 			path = Forms;
 			sourceTree = "<group>";
 		};
+		B1B44EC62C01A5E600D6B631 /* UserDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B1B44EC72C01A5F900D6B631 /* UserDashView.swift */,
+			);
+			path = UserDashboard;
+			sourceTree = "<group>";
+		};
+		B1B44EC92C01AD0200D6B631 /* LiveShow */ = {
+			isa = PBXGroup;
+			children = (
+				B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */,
+			);
+			path = LiveShow;
+			sourceTree = "<group>";
+		};
 		B1F951FF2BFCB520007FF50E = {
 			isa = PBXGroup;
 			children = (
@@ -83,7 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				B1F952192BFCBD22007FF50E /* Core */,
-				B1F9520B2BFCB520007FF50E /* CJN_iOSApp.swift */,
+				B1B44ECC2C01E3D300D6B631 /* SplashScreenView.swift */,
+				B1F57B302C0220B900420125 /* CJN_iOSApp.swift */,
 				B1F9520F2BFCB522007FF50E /* Assets.xcassets */,
 				B1F952112BFCB522007FF50E /* Preview Content */,
 			);
@@ -101,6 +124,8 @@
 		B1F952192BFCBD22007FF50E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B1B44EC92C01AD0200D6B631 /* LiveShow */,
+				B1B44EC62C01A5E600D6B631 /* UserDashboard */,
 				B1F9521A2BFCBD30007FF50E /* Authentication */,
 			);
 			path = Core;
@@ -196,12 +221,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1F9520E2BFCB520007FF50E /* LoginView.swift in Sources */,
+				B1F57B312C0220B900420125 /* CJN_iOSApp.swift in Sources */,
 				B12079CF2BFEEC3800BA98C6 /* ViewerForm.swift in Sources */,
+				B1B44EC82C01A5F900D6B631 /* UserDashView.swift in Sources */,
 				B12079CB2BFEEBF700BA98C6 /* CandidateForm.swift in Sources */,
+				B1B44ECD2C01E3D300D6B631 /* SplashScreenView.swift in Sources */,
 				B12079CD2BFEEC1100BA98C6 /* EmployerForm.swift in Sources */,
+				B1B44ECB2C01AD1300D6B631 /* LiveShowView.swift in Sources */,
 				B1F9521D2BFCBD7B007FF50E /* LoginViewModel.swift in Sources */,
 				B1F952232BFDA0B5007FF50E /* RegistrationViewModel.swift in Sources */,
-				B1F9520C2BFCB520007FF50E /* CJN_iOSApp.swift in Sources */,
 				B1F9521F2BFCCA4D007FF50E /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +275,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -310,6 +339,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -333,10 +363,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CJN_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = U5BJUGD7KV;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -351,6 +382,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shreyas.CJN-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,10 +394,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CJN_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = U5BJUGD7KV;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -380,6 +413,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shreyas.CJN-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
