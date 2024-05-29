@@ -24,7 +24,10 @@ struct CandidateForm: View {
     var phoneCodes: [String]
     
     var body: some View {
-        Form {
+        Form() {
+            
+            
+            
             TextFieldWithLabel(label: "Candidate Name", placeholder: "Candidate Name *", text: $candidateName)
             
 //            VStack(alignment: .leading, spacing: 4) {
@@ -62,10 +65,10 @@ struct CandidateForm: View {
             TextFieldWithLabel(label: "Candidate Email", placeholder: "Candidate Email *", text: $candidateEmail)
             SecureFieldWithLabel(label: "Password", placeholder: "Please enter the candidate password *", text: $password)
 
-            VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment:.top) {
                 Text("Candidate Gender")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                    .font(.headline)
+                    
                 Picker(selection: $candidateGender, label: Text("")) {
                     Text("Male").tag("Male")
                     Text("Female").tag("Female")
@@ -80,25 +83,26 @@ struct CandidateForm: View {
                 )
                 .shadow(color: Color.blue.opacity(0.4), radius: 4, x: 0, y: 2)
             }
+            .padding(.bottom)
 
             TextFieldWithLabel(label: "Candidate Department", placeholder: "Candidate Department", text: $candidateDepartment)
             TextFieldWithLabel(label: "Academic Year", placeholder: "Academic Year", text: $academicYear)
             
-            VStack(alignment: .leading, spacing: 4) {
+            HStack( spacing: 4) {
                 Text("Candidate Date Of Birth (DOB)")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                    .font(.headline)
                 DatePicker("", selection: $candidateDOB, displayedComponents: .date)
                     .datePickerStyle(CompactDatePickerStyle())
                     .padding()
                     .background(Color.white)
                     .cornerRadius(8)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.black.opacity(0.3), lineWidth: 1)
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.black, lineWidth: 1)
                     )
                     .shadow(color: Color.blue.opacity(0.4), radius: 4, x: 0, y: 2)
             }
+            .padding(.bottom)
 
             TextFieldWithLabel(label: "College Code", placeholder: "College Code", text: $collegeCode)
             TextFieldWithLabel(label: "Password", placeholder: "Password *", text: $password)
@@ -106,6 +110,9 @@ struct CandidateForm: View {
             TextFieldWithLabel(label: "Skills", placeholder: "Skills", text: $skills)
             TextFieldWithLabel(label: "Experience", placeholder: "Experience", text: $experience)
         }
+        .scrollContentBackground(.hidden)
+        .background(.white)
+
     }
 }
 

@@ -25,7 +25,7 @@ struct ContentView: View {
             if showSplash {
                 SplashScreenView()
                     .onAppear {
-                        // Transition after 2 seconds
+                       
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation {
                                 showSplash = false
@@ -33,9 +33,15 @@ struct ContentView: View {
                         }
                     }
             } else {
-                LoginView()
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                                iPadLoginView()
+                            } else {
+                                LoginView()
+                            }
+               
             }
         }
+        
     }
 }
 

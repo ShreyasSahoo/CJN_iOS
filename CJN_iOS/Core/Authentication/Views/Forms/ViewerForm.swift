@@ -18,7 +18,7 @@ struct ViewerForm: View {
     @ObservedObject var registrationViewModel: RegistrationViewModel
     var body: some View {
         VStack {
-            Form {
+            Form() {
                 Section(header: Text("Viewer Information")) { // Add a header for the section
                     TextFieldWithLabel(label: "Name", placeholder: "Please enter the your name ", text: $registrationViewModel.viewerName)
                     TextFieldWithLabel(label: "Email", placeholder: "Please enter the viewer email *", text: $registrationViewModel.viewerEmail)
@@ -26,7 +26,9 @@ struct ViewerForm: View {
                     PhoneFieldWithLabel(label: "Phone Number", placeholder: "Phone Number", phone: $registrationViewModel.viewerPhone , selectedPhoneCode: $registrationViewModel.viewerCountryCode, phoneCodes: phoneCodes)
                 }
             }
-            .formStyle(.grouped)
+            .scrollContentBackground(.hidden)
+            .background(.white)
+
         }
     }
 }
@@ -44,12 +46,13 @@ struct TextFieldWithLabel: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                )
+                .overlay{
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.secondary)
+                }
                 .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
         }
+        .padding(.bottom)
     }
 }
 
@@ -66,12 +69,13 @@ struct SecureFieldWithLabel: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                )
+                .overlay{
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.secondary)
+                }
                 .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
         }
+        .padding(.bottom)
     }
 }
 
@@ -83,17 +87,21 @@ struct PhoneFieldWithLabel: View {
     let phoneCodes: [String]
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment:.leading) {
             Text(label)
                 .font(.headline)
-            VStack {
-                Picker("Phone Code", selection: $selectedPhoneCode) {
+            HStack {
+                Picker("Country Code", selection: $selectedPhoneCode) {
                     ForEach(phoneCodes, id: \.self) { code in
                         Text(code)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
                 .padding()
+                .overlay{
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.secondary)
+                }
                 
                 TextField(placeholder, text: $phone)
                     .keyboardType(.phonePad)
@@ -101,12 +109,13 @@ struct PhoneFieldWithLabel: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                    )
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.secondary)
+                    }
                     .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
             }
         }
+        .padding(.bottom)
     }
 }

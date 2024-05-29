@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10DAF432C070639009E749B /* JobDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10DAF422C070639009E749B /* JobDescription.swift */; };
+		B10DAF452C07110D009E749B /* JobOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10DAF442C07110D009E749B /* JobOffersView.swift */; };
+		B10DAF482C073974009E749B /* AssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10DAF472C073974009E749B /* AssessmentView.swift */; };
+		B10DAF4A2C074FC2009E749B /* AssignmentHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10DAF492C074FC2009E749B /* AssignmentHome.swift */; };
+		B10DAF4C2C075369009E749B /* AssessmentPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10DAF4B2C075369009E749B /* AssessmentPaymentView.swift */; };
 		B12079CB2BFEEBF700BA98C6 /* CandidateForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CA2BFEEBF700BA98C6 /* CandidateForm.swift */; };
 		B12079CD2BFEEC1100BA98C6 /* EmployerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CC2BFEEC1100BA98C6 /* EmployerForm.swift */; };
 		B12079CF2BFEEC3800BA98C6 /* ViewerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */; };
 		B1B44EC82C01A5F900D6B631 /* UserDashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B44EC72C01A5F900D6B631 /* UserDashView.swift */; };
 		B1B44ECB2C01AD1300D6B631 /* LiveShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */; };
 		B1B44ECD2C01E3D300D6B631 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B44ECC2C01E3D300D6B631 /* SplashScreenView.swift */; };
+		B1D32EE92C0785ED00497691 /* AssessmentPassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D32EE82C0785ED00497691 /* AssessmentPassView.swift */; };
+		B1D32EEB2C0788C400497691 /* AssessmentFailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D32EEA2C0788C400497691 /* AssessmentFailView.swift */; };
 		B1F57B312C0220B900420125 /* CJN_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F57B302C0220B900420125 /* CJN_iOSApp.swift */; };
 		B1F9520E2BFCB520007FF50E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9520D2BFCB520007FF50E /* LoginView.swift */; };
 		B1F952102BFCB522007FF50E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F9520F2BFCB522007FF50E /* Assets.xcassets */; };
@@ -20,15 +27,28 @@
 		B1F9521D2BFCBD7B007FF50E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9521C2BFCBD7B007FF50E /* LoginViewModel.swift */; };
 		B1F9521F2BFCCA4D007FF50E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */; };
 		B1F952232BFDA0B5007FF50E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F952222BFDA0B5007FF50E /* RegistrationViewModel.swift */; };
+		B1FB86112C049F5E00EA6176 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB86102C049F5D00EA6176 /* FeedbackViewModel.swift */; };
+		B1FB86132C049F8F00EA6176 /* FeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB86122C049F8F00EA6176 /* FeedbackModel.swift */; };
+		B1FB86152C04A30100EA6176 /* iPadLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB86142C04A30100EA6176 /* iPadLoginView.swift */; };
+		B1FB86172C04B5F400EA6176 /* iPadRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB86162C04B5F400EA6176 /* iPadRegistrationView.swift */; };
+		B1FB86192C04B88000EA6176 /* iPadUserdashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB86182C04B88000EA6176 /* iPadUserdashView.swift */; };
+		B1FB861B2C04C17100EA6176 /* iPadLiveShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FB861A2C04C17100EA6176 /* iPadLiveShowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B10DAF422C070639009E749B /* JobDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDescription.swift; sourceTree = "<group>"; };
+		B10DAF442C07110D009E749B /* JobOffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobOffersView.swift; sourceTree = "<group>"; };
+		B10DAF472C073974009E749B /* AssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentView.swift; sourceTree = "<group>"; };
+		B10DAF492C074FC2009E749B /* AssignmentHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentHome.swift; sourceTree = "<group>"; };
+		B10DAF4B2C075369009E749B /* AssessmentPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentPaymentView.swift; sourceTree = "<group>"; };
 		B12079CA2BFEEBF700BA98C6 /* CandidateForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateForm.swift; sourceTree = "<group>"; };
 		B12079CC2BFEEC1100BA98C6 /* EmployerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerForm.swift; sourceTree = "<group>"; };
 		B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerForm.swift; sourceTree = "<group>"; };
 		B1B44EC72C01A5F900D6B631 /* UserDashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDashView.swift; sourceTree = "<group>"; };
 		B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveShowView.swift; sourceTree = "<group>"; };
 		B1B44ECC2C01E3D300D6B631 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		B1D32EE82C0785ED00497691 /* AssessmentPassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentPassView.swift; sourceTree = "<group>"; };
+		B1D32EEA2C0788C400497691 /* AssessmentFailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentFailView.swift; sourceTree = "<group>"; };
 		B1F57B302C0220B900420125 /* CJN_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CJN_iOSApp.swift; sourceTree = "<group>"; };
 		B1F952082BFCB520007FF50E /* CJN_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJN_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F9520D2BFCB520007FF50E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -37,6 +57,12 @@
 		B1F9521C2BFCBD7B007FF50E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		B1F952222BFDA0B5007FF50E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		B1FB86102C049F5D00EA6176 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
+		B1FB86122C049F8F00EA6176 /* FeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackModel.swift; sourceTree = "<group>"; };
+		B1FB86142C04A30100EA6176 /* iPadLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadLoginView.swift; sourceTree = "<group>"; };
+		B1FB86162C04B5F400EA6176 /* iPadRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadRegistrationView.swift; sourceTree = "<group>"; };
+		B1FB86182C04B88000EA6176 /* iPadUserdashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadUserdashView.swift; sourceTree = "<group>"; };
+		B1FB861A2C04C17100EA6176 /* iPadLiveShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadLiveShowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +76,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B10DAF412C070618009E749B /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				B10DAF422C070639009E749B /* JobDescription.swift */,
+				B10DAF442C07110D009E749B /* JobOffersView.swift */,
+			);
+			path = Job;
+			sourceTree = "<group>";
+		};
+		B10DAF462C07395B009E749B /* Assessment */ = {
+			isa = PBXGroup;
+			children = (
+				B10DAF472C073974009E749B /* AssessmentView.swift */,
+				B1D32EE82C0785ED00497691 /* AssessmentPassView.swift */,
+				B1D32EEA2C0788C400497691 /* AssessmentFailView.swift */,
+				B10DAF492C074FC2009E749B /* AssignmentHome.swift */,
+				B10DAF4B2C075369009E749B /* AssessmentPaymentView.swift */,
+			);
+			path = Assessment;
+			sourceTree = "<group>";
+		};
 		B12079C82BFE1E1E00BA98C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B1B44EC72C01A5F900D6B631 /* UserDashView.swift */,
+				B1FB86182C04B88000EA6176 /* iPadUserdashView.swift */,
 			);
 			path = UserDashboard;
 			sourceTree = "<group>";
@@ -81,6 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */,
+				B1FB86122C049F8F00EA6176 /* FeedbackModel.swift */,
+				B1FB86102C049F5D00EA6176 /* FeedbackViewModel.swift */,
+				B1FB861A2C04C17100EA6176 /* iPadLiveShowView.swift */,
 			);
 			path = LiveShow;
 			sourceTree = "<group>";
@@ -124,6 +175,8 @@
 		B1F952192BFCBD22007FF50E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B10DAF462C07395B009E749B /* Assessment */,
+				B10DAF412C070618009E749B /* Job */,
 				B1B44EC92C01AD0200D6B631 /* LiveShow */,
 				B1B44EC62C01A5E600D6B631 /* UserDashboard */,
 				B1F9521A2BFCBD30007FF50E /* Authentication */,
@@ -144,6 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				B1F9520D2BFCB520007FF50E /* LoginView.swift */,
+				B1FB86142C04A30100EA6176 /* iPadLoginView.swift */,
+				B1FB86162C04B5F400EA6176 /* iPadRegistrationView.swift */,
 				B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */,
 				B12079C92BFEEB3400BA98C6 /* Forms */,
 			);
@@ -220,17 +275,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D32EEB2C0788C400497691 /* AssessmentFailView.swift in Sources */,
+				B1FB861B2C04C17100EA6176 /* iPadLiveShowView.swift in Sources */,
+				B1FB86152C04A30100EA6176 /* iPadLoginView.swift in Sources */,
 				B1F9520E2BFCB520007FF50E /* LoginView.swift in Sources */,
 				B1F57B312C0220B900420125 /* CJN_iOSApp.swift in Sources */,
 				B12079CF2BFEEC3800BA98C6 /* ViewerForm.swift in Sources */,
+				B10DAF452C07110D009E749B /* JobOffersView.swift in Sources */,
+				B10DAF4A2C074FC2009E749B /* AssignmentHome.swift in Sources */,
 				B1B44EC82C01A5F900D6B631 /* UserDashView.swift in Sources */,
 				B12079CB2BFEEBF700BA98C6 /* CandidateForm.swift in Sources */,
+				B10DAF4C2C075369009E749B /* AssessmentPaymentView.swift in Sources */,
 				B1B44ECD2C01E3D300D6B631 /* SplashScreenView.swift in Sources */,
 				B12079CD2BFEEC1100BA98C6 /* EmployerForm.swift in Sources */,
+				B1FB86172C04B5F400EA6176 /* iPadRegistrationView.swift in Sources */,
+				B1FB86192C04B88000EA6176 /* iPadUserdashView.swift in Sources */,
+				B10DAF482C073974009E749B /* AssessmentView.swift in Sources */,
 				B1B44ECB2C01AD1300D6B631 /* LiveShowView.swift in Sources */,
+				B1D32EE92C0785ED00497691 /* AssessmentPassView.swift in Sources */,
 				B1F9521D2BFCBD7B007FF50E /* LoginViewModel.swift in Sources */,
 				B1F952232BFDA0B5007FF50E /* RegistrationViewModel.swift in Sources */,
+				B10DAF432C070639009E749B /* JobDescription.swift in Sources */,
+				B1FB86132C049F8F00EA6176 /* FeedbackModel.swift in Sources */,
 				B1F9521F2BFCCA4D007FF50E /* RegistrationView.swift in Sources */,
+				B1FB86112C049F5E00EA6176 /* FeedbackViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,17 +432,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CJN_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = U5BJUGD7KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -395,17 +463,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CJN_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = U5BJUGD7KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

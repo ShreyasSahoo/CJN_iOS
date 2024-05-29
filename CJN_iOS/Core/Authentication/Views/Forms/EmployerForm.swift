@@ -37,7 +37,9 @@ struct EmployerForm: View {
                 
                 TextFieldWithLabel(label: "Experience", placeholder: "Experience", text: $employerExperience)
             }
-           
+            
+            .scrollContentBackground(.hidden)
+            .background(.white)
 
 
         

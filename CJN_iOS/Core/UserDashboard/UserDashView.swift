@@ -9,26 +9,39 @@ import SwiftUI
 
 struct UserDashView: View {
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 15) {
+        GeometryReader{ geo in
+            NavigationStack {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 15) {
+                        
+                        searchBar()
+                        
+                       
+                        adBanner()
+                        joinLiveShowButton()
+                        sectionHeader(title: "Upcoming show trailers")
+                        trailerScrollView()
+                        sectionHeader(title: "Recommended videos")
+                        recommendedVideosScrollView()
+                            ScrollView(.horizontal,showsIndicators: false){
+                                HStack{
+                                    ForEach(1..<10){ _ in
+                                        JobOfferView(width: geo.size.width*3/4)
+                                    }
+                                }
+                                
+                            }
+                        
+                        
+                    }
+                    .padding()
                     
-                    searchBar()
-                    
-                   
-                    adBanner()
-                    joinLiveShowButton()
-                    sectionHeader(title: "Upcoming show trailers")
-                    trailerScrollView()
-                    sectionHeader(title: "Recommended videos")
-                    recommendedVideosScrollView()
                 }
-                .padding()
-                
             }
+            .navigationTitle("")
+            .navigationBarBackButtonHidden()
         }
-        .navigationTitle("")
-        .navigationBarBackButtonHidden()
+
         
     }
     
