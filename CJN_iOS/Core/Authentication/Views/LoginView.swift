@@ -48,7 +48,7 @@ struct LoginView: View {
                             .pickerStyle(MenuPickerStyle())
                             .padding(10)
                             .background(Color(UIColor.systemGray6))
-                            .cornerRadius(8)
+                            .clipShape(.rect(cornerRadius: 8))
                         VStack(alignment:.leading){
                             Text("Email Address")
                             
@@ -152,7 +152,7 @@ struct LoginView: View {
                         }
                         .padding()
                     
-                    .padding()
+                    
 
                     Spacer()
 

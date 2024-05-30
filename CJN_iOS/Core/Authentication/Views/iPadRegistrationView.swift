@@ -88,13 +88,12 @@ struct iPadRegistrationView: View {
                         
                         if selectedUserType == "Candidate" {
                             
-                            CandidateForm(candidateName: $candidateName, candidatePhone: $candidatePhone, candidateEmail: $candidateEmail, candidateGender: $candidateGender, candidateDepartment: $candidateDepartment, academicYear: $academicYear, candidateDOB: $candidateDOB, collegeCode: $collegeCode, password: $password, highestQualifications: $highestQualifications, skills: $skills, experience: $experience, candidateSelectedPhoneCode: $candidateSelectedPhoneCode,
-                                          phoneCodes:phoneCodes)
+                            CandidateForm(registrationViewModel: registrationViewModel, phoneCodes:phoneCodes)
                             .frame(width: geo.size.width*2/3)
                             .frame(minHeight:geo.size.height*0.7)
                             
                         } else if selectedUserType == "Employer" {
-                            EmployerForm(employerName: $employerName, employerEmail: $employerEmail, companyName: $companyName, postName: $postName, employerPhone: $employerPhone, employerSelectedPhoneCode: $employerSelectedPhoneCode, employerPassword: $employerPassword, employerExperience: $employerExperience, phoneCodes: phoneCodes)
+                            EmployerForm(registrationViewModel: RegistrationViewModel(), phoneCodes: phoneCodes)
                                 .frame(width: geo.size.width*2/3)
                                 .frame(minHeight:geo.size.height*0.7)
                         } else if selectedUserType == "Viewer" {
@@ -184,24 +183,13 @@ struct iPadRegistrationView: View {
             
         }
         else if selectedUserType == "Employer" {
-            registrationViewModel.registerEmployer(name: employerName, email: employerEmail, companyName: companyName, postName: postName, countryCode: employerSelectedPhoneCode, phone: employerPhone, employerPass: employerPassword, yearsOfExperience: Int(employerExperience) ?? 0)
+            registrationViewModel.registerEmployer()
         }
         else if selectedUserType == "Candidate" {
-            registrationViewModel.registerCandidate(
-                name: candidateName,
-                email: candidateEmail,
-                countryCode: candidateSelectedPhoneCode,
-                phone: candidatePhone,
-                candidatePass: password,
-                gender: candidateGender,
-                academicYear: academicYear,
-                dateOfBirth: DateFormatter.localizedString(from: candidateDOB, dateStyle: .short, timeStyle: .none),
-                department: candidateDepartment,
-                collegeCode: collegeCode,
-                highestQualification: highestQualifications,
-                skills: skills,
-                experience: experience
-            )
+            Task{
+                await registrationViewModel.registerCandidate()
+            }
+            
         }
         
     }

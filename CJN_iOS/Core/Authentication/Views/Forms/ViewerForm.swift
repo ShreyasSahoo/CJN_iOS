@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ViewerForm: View {
-//    @Binding var viewerName: String
-//    @Binding var viewerEmail: String
-//    @Binding var viewerPassword: String
-//    @Binding var viewerPhone: String
-//    @Binding var selectedPhoneCode: String
+
    
     let phoneCodes: [String]
     @ObservedObject var registrationViewModel: RegistrationViewModel
@@ -22,12 +18,13 @@ struct ViewerForm: View {
                 Section(header: Text("Viewer Information")) { // Add a header for the section
                     TextFieldWithLabel(label: "Name", placeholder: "Please enter the your name ", text: $registrationViewModel.viewerName)
                     TextFieldWithLabel(label: "Email", placeholder: "Please enter the viewer email *", text: $registrationViewModel.viewerEmail)
-                    SecureFieldWithLabel(label: "Password", placeholder: "Please enter the viewer password *", text: $registrationViewModel.viewerPass)
+                    SecureFieldWithLabel(password: $registrationViewModel.viewerPass)
                     PhoneFieldWithLabel(label: "Phone Number", placeholder: "Phone Number", phone: $registrationViewModel.viewerPhone , selectedPhoneCode: $registrationViewModel.viewerCountryCode, phoneCodes: phoneCodes)
                 }
             }
+            .frame(maxWidth: .infinity)
             .scrollContentBackground(.hidden)
-            .background(.white)
+
 
         }
     }
@@ -43,37 +40,59 @@ struct TextFieldWithLabel: View {
             Text(label)
                 .font(.headline)
             TextField(placeholder, text: $text)
+                .textInputAutocapitalization(.never)
                 .padding()
-                .background(Color.white)
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.secondary)
-                }
-                .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                .frame(height: 44)
+//                .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
         }
         .padding(.bottom)
     }
 }
 
 struct SecureFieldWithLabel: View {
-    let label: String
-    let placeholder: String
-    @Binding var text: String
     
+    @Binding var password: String
+    @State var isPasswordVisible = false
     var body: some View {
         VStack(alignment: .leading) {
-            Text(label)
+            Text("Password")
                 .font(.headline)
-            SecureField(placeholder, text: $text)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(8)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.secondary)
-                }
-                .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+           HStack{
+               ZStack {
+                   
+                   TextField("Enter password",text: $password )
+                       .textInputAutocapitalization(.never)
+                       .padding()
+                       .background(Color(UIColor.systemGray6))
+                       .cornerRadius(8)
+                       .frame(height: 44)
+                       .opacity(isPasswordVisible ? 1 : 0)
+                   
+                   SecureField("Enter password", text: $password)
+                       .textInputAutocapitalization(.never)
+                       .padding()
+                       .background(Color(UIColor.systemGray6))
+                       .cornerRadius(8)
+                       .frame(height: 44)
+                       .opacity(isPasswordVisible ? 0 : 1)
+                   
+                   HStack {
+                       Spacer()
+                       Button(action: {
+                           isPasswordVisible.toggle()
+                       }) {
+                           Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                               .foregroundColor(Color(UIColor.systemGray))
+                               .padding()
+                               .frame(maxHeight: 10)
+                       }
+                   }
+               }
+               .padding(.bottom, 10)
+           }
+//                .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
         }
         .padding(.bottom)
     }
@@ -97,25 +116,19 @@ struct PhoneFieldWithLabel: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-                .padding()
-                .overlay{
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.secondary)
-                }
-                
+                             
                 TextField(placeholder, text: $phone)
                     .keyboardType(.phonePad)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textContentType(.telephoneNumber)
+                    .textInputAutocapitalization(.never)
                     .padding()
-                    .background(Color.white)
+                    .background(Color(UIColor.systemGray6))
                     .cornerRadius(8)
-                    .overlay{
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.secondary)
-                    }
-                    .shadow(color: Color.gray.opacity(0.4), radius: 4, x: 0, y: 2)
+                    .frame(height: 44)
+                    .frame(maxWidth: .infinity)
+
             }
         }
-        .padding(.bottom)
+        .padding(.bottom,8)
     }
 }

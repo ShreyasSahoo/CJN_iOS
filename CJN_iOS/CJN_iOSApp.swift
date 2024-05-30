@@ -10,10 +10,13 @@ import SwiftUI
 
 @main
 struct CJN_iOSApp: App {
+ 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
+        
     }
 }
 

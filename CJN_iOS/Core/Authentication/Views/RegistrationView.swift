@@ -11,34 +11,6 @@ struct RegistrationView: View {
     @StateObject private var registrationViewModel = RegistrationViewModel()
     
     @State  var selectedUserType = "Candidate"
-    @State  var candidateName = ""
-    @State  var candidatePhone = ""
-    @State  var candidateEmail = ""
-    @State  var candidateGender = "Female"
-    @State  var candidateDepartment = ""
-    @State  var academicYear = ""
-    @State  var candidateDOB = Date()
-    @State  var collegeCode = ""
-    @State  var password = ""
-    @State  var highestQualifications = ""
-    @State  var skills = ""
-    @State  var experience = ""
-    @State  var candidateSelectedPhoneCode: String = ""
-    
-    @State  var employerName = ""
-    @State  var employerEmail = ""
-    @State  var companyName = ""
-    @State  var postName = ""
-    @State  var employerPhone: String = ""
-    @State  var employerSelectedPhoneCode: String = ""
-    @State  var employerPassword = ""
-    @State  var employerExperience = ""
-    
-//    @State  var viewerName = ""
-//    @State  var viewerEmail = ""
-//    @State  var viewerPassword = ""
-//    @State  var viewerPhone: String = ""
-//    @State  var selectedPhoneCode: String = ""
 
     
     let phoneCodes = [
@@ -64,68 +36,71 @@ struct RegistrationView: View {
     var body: some View {
         GeometryReader { geo in
             NavigationView {
-                ScrollView {
+                ScrollView(showsIndicators:false) {
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Signup")
-                            .font(.title)
-                            .fontWeight(.bold)
-                        
-                        Picker(selection: $selectedUserType, label: Text("User Type")) {
-                            Text("Candidate").tag("Candidate")
-                            Text("Employer").tag("Employer")
-                            Text("Viewer").tag("Viewer")
+                       
+                        VStack{
+                            Picker(selection: $selectedUserType, label: Text("User Type")) {
+                                Text("Candidate").tag("Candidate")
+                                Text("Employer").tag("Employer")
+                                Text("Viewer").tag("Viewer")
+                            }
+                            .pickerStyle(MenuPickerStyle())
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .clipShape(.rect(cornerRadius: 8))
                         }
-                        .pickerStyle(MenuPickerStyle())
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(8)
+                        .padding(.leading)
                         
-                        if selectedUserType == "Candidate" {
-                            
-                            CandidateForm(candidateName: $candidateName, candidatePhone: $candidatePhone, candidateEmail: $candidateEmail, candidateGender: $candidateGender, candidateDepartment: $candidateDepartment, academicYear: $academicYear, candidateDOB: $candidateDOB, collegeCode: $collegeCode, password: $password, highestQualifications: $highestQualifications, skills: $skills, experience: $experience, candidateSelectedPhoneCode: $candidateSelectedPhoneCode,
-                                          phoneCodes:phoneCodes)
-                            .frame(minHeight:geo.size.height*0.7)
-                            
-                        } else if selectedUserType == "Employer" {
-                            EmployerForm(employerName: $employerName, employerEmail: $employerEmail, companyName: $companyName, postName: $postName, employerPhone: $employerPhone, employerSelectedPhoneCode: $employerSelectedPhoneCode, employerPassword: $employerPassword, employerExperience: $employerExperience, phoneCodes: phoneCodes)
-                                .frame(minHeight:geo.size.height*0.7)
-                        } else if selectedUserType == "Viewer" {
-                            ViewerForm(phoneCodes: phoneCodes, registrationViewModel: registrationViewModel)
-                                .frame(minHeight:geo.size.height*0.7)
-                            
-                            
-                        }
-                        
-                        HStack {
-                            Button {
-                                clearForm()
-                            } label : {
-                                Text("Clear")
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.gray)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(8)
+                        ZStack(alignment:.bottom){
+                            if selectedUserType == "Candidate" {
+                                
+                                CandidateForm(registrationViewModel: registrationViewModel, phoneCodes:phoneCodes)
+                                    .frame(minHeight:geo.size.height*0.75)
+                            } else if selectedUserType == "Employer" {
+                                EmployerForm(registrationViewModel: registrationViewModel, phoneCodes: phoneCodes)
+                                    .frame(minHeight:geo.size.height*0.7)
+                            } else if selectedUserType == "Viewer" {
+                                ViewerForm(phoneCodes: phoneCodes, registrationViewModel: registrationViewModel)
+                                    .frame(minHeight:geo.size.height*0.7)
+                                
                             }
                             
-                            Button(action: {
+                            HStack {
+                                Button {
+                                    clearForm()
+                                } label : {
+                                    Text("Clear")
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.gray)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(8)
+                                }
                                 
+                                Button(action: {
                                     registerUser()
-                                
-                              
-                            }) {
-                                Text("Register")
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(8)
+                                }) {
+                                    Text("Register")
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(8)
+                                }
                             }
+                            .padding(.horizontal)
+//                            .background(.red)
                         }
+                        
+                        
                     }
+                    
+                    .frame(width:geo.size.width*9/10)
                     .padding()
                 }
-                .navigationBarTitle("Register", displayMode: .inline)
+                
+                .navigationBarTitle("Register", displayMode: .large)
             }
         }
     }
@@ -133,27 +108,27 @@ struct RegistrationView: View {
  
 
     private func clearForm() {
-        candidateName = ""
-        candidatePhone = ""
-        candidateEmail = ""
-        candidateGender = "Female"
-        candidateDepartment = ""
-        academicYear = ""
-        candidateDOB = Date()
-        collegeCode = ""
-        password = ""
-        highestQualifications = ""
-        skills = ""
-        experience = ""
+//        candidateName = ""
+//        candidatePhone = ""
+//        candidateEmail = ""
+//        candidateGender = "Female"
+//        candidateDepartment = ""
+//        academicYear = ""
+//        candidateDOB = Date()
+//        collegeCode = ""
+//        password = ""
+//        highestQualifications = ""
+//        skills = ""
+//        experience = ""
 
-        employerName = ""
-        employerEmail = ""
-        companyName = ""
-        postName = ""
-        employerPhone = ""
-        employerSelectedPhoneCode = ""
-        employerPassword = ""
-        employerExperience = ""
+//        employerName = ""
+//        employerEmail = ""
+//        companyName = ""
+//        postName = ""
+//        employerPhone = ""
+//        employerSelectedPhoneCode = ""
+//        employerPassword = ""
+//        employerExperience = ""
 
 //        viewerName = ""
 //        viewerPhone = ""
@@ -165,37 +140,24 @@ struct RegistrationView: View {
 
     private func registerUser()  {
         if selectedUserType == "Viewer"{
-            
          registrationViewModel.registerViewer()
-            
             
         }
         else if selectedUserType == "Employer" {
-            registrationViewModel.registerEmployer(name: employerName, email: employerEmail, companyName: companyName, postName: postName, countryCode: employerSelectedPhoneCode, phone: employerPhone, employerPass: employerPassword, yearsOfExperience: Int(employerExperience) ?? 0)
+            registrationViewModel.registerEmployer()
         }
         else if selectedUserType == "Candidate" {
-            registrationViewModel.registerCandidate(
-                name: candidateName,
-                email: candidateEmail,
-                countryCode: candidateSelectedPhoneCode,
-                phone: candidatePhone,
-                candidatePass: password,
-                gender: candidateGender,
-                academicYear: academicYear,
-                dateOfBirth: DateFormatter.localizedString(from: candidateDOB, dateStyle: .short, timeStyle: .none),
-                department: candidateDepartment,
-                collegeCode: collegeCode,
-                highestQualification: highestQualifications,
-                skills: skills,
-                experience: experience
-            )
+            Task{
+               await registrationViewModel.registerCandidate()
+            }
+            
         }
         
     }
 }
 
-struct RegistrationView_Previews: PreviewProvider {
-    static var previews: some View {
+#Preview{
+    NavigationStack{
         RegistrationView()
     }
 }
