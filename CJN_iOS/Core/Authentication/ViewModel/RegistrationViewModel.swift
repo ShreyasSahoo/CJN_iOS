@@ -171,7 +171,7 @@ class RegistrationViewModel: ObservableObject {
             
         }
         else if selectedUserType == "Candidate" {
-            if validateEmployerForm() {
+            if validateCandidateForm() {
                 await registerCandidate()
             }
             
