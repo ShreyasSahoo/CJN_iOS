@@ -10,30 +10,32 @@ import SwiftUI
 struct iPadRegistrationView: View {
     @StateObject private var registrationViewModel = RegistrationViewModel()
     
+    @Environment(\.presentationMode) private var presentationMode :Binding<PresentationMode>
+    
     @State  var selectedUserType = "Candidate"
-    @State  var candidateName = ""
-    @State  var candidatePhone = ""
-    @State  var candidateEmail = ""
-    @State  var candidateGender = "Female"
-    @State  var candidateDepartment = ""
-    @State  var academicYear = ""
-    @State  var candidateDOB = Date()
-    @State  var collegeCode = ""
-    @State  var password = ""
-    @State  var highestQualifications = ""
-    @State  var skills = ""
-    @State  var experience = ""
-    @State  var candidateSelectedPhoneCode: String = ""
+//    @State  var candidateName = ""
+//    @State  var candidatePhone = ""
+//    @State  var candidateEmail = ""
+//    @State  var candidateGender = "Female"
+//    @State  var candidateDepartment = ""
+//    @State  var academicYear = ""
+//    @State  var candidateDOB = Date()
+//    @State  var collegeCode = ""
+//    @State  var password = ""
+//    @State  var highestQualifications = ""
+//    @State  var skills = ""
+//    @State  var experience = ""
+//    @State  var candidateSelectedPhoneCode: String = ""
     
-    @State  var employerName = ""
-    @State  var employerEmail = ""
-    @State  var companyName = ""
-    @State  var postName = ""
-    @State  var employerPhone: String = ""
-    @State  var employerSelectedPhoneCode: String = ""
-    @State  var employerPassword = ""
-    @State  var employerExperience = ""
-    
+//    @State  var employerName = ""
+//    @State  var employerEmail = ""
+//    @State  var companyName = ""
+//    @State  var postName = ""
+//    @State  var employerPhone: String = ""
+//    @State  var employerSelectedPhoneCode: String = ""
+//    @State  var employerPassword = ""
+//    @State  var employerExperience = ""
+//    
 //    @State  var viewerName = ""
 //    @State  var viewerEmail = ""
 //    @State  var viewerPassword = ""
@@ -71,10 +73,8 @@ struct iPadRegistrationView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 200)
-                        
-                        Text("Signup")
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .padding(.top,40)
+                     
                         
                         Picker(selection: $selectedUserType, label: Text("User Type")) {
                             Text("Candidate").tag("Candidate")
@@ -89,36 +89,38 @@ struct iPadRegistrationView: View {
                         if selectedUserType == "Candidate" {
                             
                             CandidateForm(registrationViewModel: registrationViewModel, phoneCodes:phoneCodes)
-                            .frame(width: geo.size.width*2/3)
+                            .frame(width: geo.size.width*4/5)
                             .frame(minHeight:geo.size.height*0.7)
                             
                         } else if selectedUserType == "Employer" {
                             EmployerForm(registrationViewModel: RegistrationViewModel(), phoneCodes: phoneCodes)
-                                .frame(width: geo.size.width*2/3)
+                                .frame(width: geo.size.width*4/5)
                                 .frame(minHeight:geo.size.height*0.7)
                         } else if selectedUserType == "Viewer" {
                             ViewerForm(phoneCodes: phoneCodes, registrationViewModel: registrationViewModel)
-                                .frame(width: geo.size.width*2/3)
+                                .frame(width: geo.size.width*4/5)
                                 .frame(minHeight:geo.size.height*0.7)
                             
                             
                         }
                         
                         HStack (spacing:40){
-                            Button {
+                            Button (role: .destructive){
                                 clearForm()
                             } label : {
                                 Text("Clear")
                                     .frame(maxWidth: geo.size.width/4)
                                     .padding()
-                                    .background(Color.gray)
+                                    .background(Color.red)
                                     .foregroundColor(.white)
                                     .cornerRadius(8)
                             }
                             
                             Button(action: {
-                                
-                                    registerUser()
+                                Task{
+                                    await     registrationViewModel.registerUser(selectedUserType)
+                                }
+                            
                                 
                               
                             }) {
@@ -137,7 +139,19 @@ struct iPadRegistrationView: View {
                     .frame(height: geo.size.height)
                     .padding()
                 }
+                .frame(width:geo.size.width, height: geo.size.height)
                 .navigationBarTitle("Register", displayMode: .inline)
+                .toolbar(content: {
+                    ToolbarItem(placement:.topBarLeading){
+                        Button{
+                            presentationMode.wrappedValue.dismiss()
+                        } label:{
+                            Image(systemName: "arrowshape.backward.circle.fill")
+                                .foregroundStyle(Color.accentColor)
+                                .scaleEffect(1.5)
+                        }
+                    }
+                })
             }
         }
     }
@@ -145,54 +159,11 @@ struct iPadRegistrationView: View {
  
 
     private func clearForm() {
-        candidateName = ""
-        candidatePhone = ""
-        candidateEmail = ""
-        candidateGender = "Female"
-        candidateDepartment = ""
-        academicYear = ""
-        candidateDOB = Date()
-        collegeCode = ""
-        password = ""
-        highestQualifications = ""
-        skills = ""
-        experience = ""
 
-        employerName = ""
-        employerEmail = ""
-        companyName = ""
-        postName = ""
-        employerPhone = ""
-        employerSelectedPhoneCode = ""
-        employerPassword = ""
-        employerExperience = ""
 
-//        viewerName = ""
-//        viewerPhone = ""
-//        viewerEmail = ""
-//        viewerPassword = ""
-//        selectedPhoneCode = ""
     }
 
 
-    private func registerUser()  {
-        if selectedUserType == "Viewer"{
-            
-         registrationViewModel.registerViewer()
-            
-            
-        }
-        else if selectedUserType == "Employer" {
-            registrationViewModel.registerEmployer()
-        }
-        else if selectedUserType == "Candidate" {
-            Task{
-                await registrationViewModel.registerCandidate()
-            }
-            
-        }
-        
-    }
 }
 
 #Preview {

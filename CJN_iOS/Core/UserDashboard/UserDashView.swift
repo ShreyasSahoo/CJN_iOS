@@ -111,6 +111,7 @@ struct UserDashView: View {
     private func joinLiveShowButton() -> some View {
         NavigationLink {
            LiveShowView()
+                .navigationBarBackButtonHidden(true)
         } label: {
             Text("Join live Show")
                 .padding()

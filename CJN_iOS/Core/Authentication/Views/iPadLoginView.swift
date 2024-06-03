@@ -14,6 +14,17 @@ struct iPadLoginView: View {
     @State private var rememberMe = false
     @State private var showInvalidParams = false
     @State private var showLoginSuccess  = false
+    
+    
+    
+     private var smallPassword: Bool {
+        if loginViewModel.password.count < 6{
+            return true
+        } else {
+            return false
+        }
+        
+    }
     var body: some View {
         
         GeometryReader { geo in
@@ -58,6 +69,10 @@ struct iPadLoginView: View {
                             .frame(width: geo.size.width/2)
                             VStack (alignment:.leading){
                                 Text("Password")
+                                if smallPassword {
+                                    Text("Password should be longer than 6 characters")
+                                        .foregroundStyle(.red)
+                                }
                                 HStack {
                                     ZStack {
                                         
@@ -139,7 +154,9 @@ struct iPadLoginView: View {
                             
                         HStack {
                             Text("Don't have an account?")
-                            NavigationLink(destination: RegistrationView()){
+                            NavigationLink(destination: iPadRegistrationView()
+                                .navigationBarBackButtonHidden(true)
+                            ){
                                 Text("Register")
                                     .foregroundColor(.red)
                             }
@@ -191,7 +208,7 @@ struct iPadLoginView: View {
                     }
                     .padding(.top,30)
                     Spacer()
-                    NavigationLink(destination: iPadUserdashView(), isActive:  $showLoginSuccess) {
+                    NavigationLink(destination: iPadUserdashView().navigationBarBackButtonHidden(true), isActive:  $showLoginSuccess) {
                                     EmptyView()
                                 }
                 }

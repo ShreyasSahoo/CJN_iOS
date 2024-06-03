@@ -10,7 +10,9 @@ import SwiftUI
 struct RegistrationView: View {
     @StateObject private var registrationViewModel = RegistrationViewModel()
     
-    @State  var selectedUserType = "Candidate"
+    @Environment(\.presentationMode) private var presentationMode :Binding<PresentationMode>
+    
+    @State var selectedUserType = "Candidate"
 
     
     let phoneCodes = [
@@ -37,6 +39,8 @@ struct RegistrationView: View {
         GeometryReader { geo in
             NavigationView {
                 ScrollView(showsIndicators:false) {
+                   
+                    
                     VStack(alignment: .leading, spacing: 16) {
                        
                         VStack{
@@ -54,43 +58,51 @@ struct RegistrationView: View {
                         
                         ZStack(alignment:.bottom){
                             if selectedUserType == "Candidate" {
+                                VStack{
+                                    CandidateForm(registrationViewModel: registrationViewModel, phoneCodes:phoneCodes)
+                                }
                                 
-                                CandidateForm(registrationViewModel: registrationViewModel, phoneCodes:phoneCodes)
-                                    .frame(minHeight:geo.size.height*0.75)
+                                 .frame(minHeight:geo.size.height*0.85)
+                                    .background(.red)
                             } else if selectedUserType == "Employer" {
                                 EmployerForm(registrationViewModel: registrationViewModel, phoneCodes: phoneCodes)
-                                    .frame(minHeight:geo.size.height*0.7)
+                                    .frame(minHeight:geo.size.height*0.85)
+                                    
                             } else if selectedUserType == "Viewer" {
                                 ViewerForm(phoneCodes: phoneCodes, registrationViewModel: registrationViewModel)
-                                    .frame(minHeight:geo.size.height*0.7)
+                                    .frame(minHeight:geo.size.height*0.85)
                                 
                             }
                             
                             HStack {
-                                Button {
+                                Button (role: .destructive){
                                     clearForm()
                                 } label : {
                                     Text("Clear")
                                         .frame(maxWidth: .infinity)
                                         .padding()
-                                        .background(Color.gray)
+                                        .background(Color.red)
                                         .foregroundColor(.white)
                                         .cornerRadius(8)
                                 }
                                 
                                 Button(action: {
-                                    registerUser()
+                                    Task{
+                                        await     registrationViewModel.registerUser(selectedUserType)
+                                    }
                                 }) {
                                     Text("Register")
                                         .frame(maxWidth: .infinity)
                                         .padding()
-                                        .background(Color.blue)
+                                        .background(Color.accentColor)
                                         .foregroundColor(.white)
                                         .cornerRadius(8)
                                 }
                             }
-                            .padding(.horizontal)
-//                            .background(.red)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .padding([.horizontal,.top])
+                            .background(.white)
                         }
                         
                         
@@ -99,8 +111,19 @@ struct RegistrationView: View {
                     .frame(width:geo.size.width*9/10)
                     .padding()
                 }
+                .navigationBarTitle("Register", displayMode: .inline)
                 
-                .navigationBarTitle("Register", displayMode: .large)
+                .toolbar(content: {
+                    ToolbarItem(placement:.topBarLeading){
+                        Button{
+                            presentationMode.wrappedValue.dismiss()
+                        } label:{
+                            Image(systemName: "arrowshape.backward.circle.fill")
+                                .foregroundStyle(Color.accentColor)
+                                .scaleEffect(1.5)
+                        }
+                    }
+                })
             }
         }
     }
@@ -138,22 +161,7 @@ struct RegistrationView: View {
     }
 
 
-    private func registerUser()  {
-        if selectedUserType == "Viewer"{
-         registrationViewModel.registerViewer()
-            
-        }
-        else if selectedUserType == "Employer" {
-            registrationViewModel.registerEmployer()
-        }
-        else if selectedUserType == "Candidate" {
-            Task{
-               await registrationViewModel.registerCandidate()
-            }
-            
-        }
-        
-    }
+
 }
 
 #Preview{

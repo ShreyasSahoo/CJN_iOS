@@ -6,95 +6,15 @@
 //
 
 import Foundation
+//import SwiftUI
 
-//struct RegistrationResponse : Decodable {
-//    
-//    let responseMessage : ResponseMessage
-//    let responseStatus : Bool
-//    
-//
-//}   
-//struct ResponseMessage : Decodable {
-//    
-//    let viewerEmail : String
-//    let viewerName : String
-//    let viewerPass : String
-//    let viewerPhone : Int
-//}
-
-
-struct CandidateResponse: Codable {
-    let responseMessage: ResponseMessage
-    let responseStatus: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case responseMessage
-        case responseStatus
-    }
-}
-
-struct ResponseMessage: Codable {
-    let data: CandidateData
-    
-    enum CodingKeys: String, CodingKey {
-        case data
-    }
-}
-
-struct CandidateData: Codable {
-    let candidateAcdYear: Int
-    let candidateClgCode: String
-    let candidateDept: String
-    let candidateDob: String
-    let candidateEmail: String
-    let candidateGender: String
-    let candidateId: String
-    let candidateImagePath: String
-    let candidateName: String
-    let candidatePass: String
-    let candidatePhone: Int
-    let candidatePicture: String
-    let candidateResume: String
-    let candidateVidume: String
-    let countryCode: String
-    let createdAt: String
-    let experience: Int
-    let highestQualification: String
-    let id: Int
-    let isActive: Bool
-    let skills: String
-    let updatedAt: String
-    
-    enum CodingKeys: String, CodingKey {
-        case candidateAcdYear = "candidate_acd_year"
-        case candidateClgCode = "candidate_clg_code"
-        case candidateDept = "candidate_dept"
-        case candidateDob = "candidate_dob"
-        case candidateEmail = "candidate_email"
-        case candidateGender = "candidate_gender"
-        case candidateId = "candidate_id"
-        case candidateImagePath = "candidate_image_path"
-        case candidateName = "candidate_name"
-        case candidatePass = "candidate_pass"
-        case candidatePhone = "candidate_phone"
-        case candidatePicture = "candidate_picture"
-        case candidateResume = "candidate_resume"
-        case candidateVidume = "candidate_vidume"
-        case countryCode = "country_code"
-        case createdAt = "created_at"
-        case experience = "experience"
-        case highestQualification = "highest_qualification"
-        case id
-        case isActive = "is_active"
-        case skills
-        case updatedAt = "updated_at"
-    }
-}
 class RegistrationViewModel: ObservableObject {
     
-//    @Published var candidateRegistrationResponse = RegistrationResponse(responseMessage: ResponseMessage(viewerEmail: "", viewerName: "", viewerPass: "", viewerPhone: 0), responseStatus: false)
+
     
-    @Published var candidateRegistrationResponse = CandidateResponse(responseMessage: ResponseMessage(data: CandidateData(candidateAcdYear: 0, candidateClgCode: "", candidateDept: "", candidateDob: "", candidateEmail: "", candidateGender: "", candidateId: "", candidateImagePath: "", candidateName: "", candidatePass: "", candidatePhone: 0, candidatePicture: "", candidateResume: "", candidateVidume: "", countryCode: "", createdAt: "", experience: 0, highestQualification: "", id: 0, isActive: false, skills: "", updatedAt: "")), responseStatus: 0)
+    @Published var viewerResponse: ViewerResponse? = nil
+    @Published var employerResponse: EmployerResponse? = nil
+    @Published var candidateResponse: CandidateResponse? = nil
     
     @Published var viewerName = ""
     @Published var viewerEmail = ""
@@ -117,7 +37,7 @@ class RegistrationViewModel: ObservableObject {
     @Published var candidatePhone = ""
     @Published var candidatePass = ""
     @Published var candidateGender = ""
-    @Published var candidateAcademicYear = 0
+    @Published var candidateAcademicYear = Int()
     @Published var candidateDateOfBirth = Date()
     @Published var candidateDepartment = ""
     @Published var candidateCollegeCode = ""
@@ -129,9 +49,30 @@ class RegistrationViewModel: ObservableObject {
     private let employerURL = URL(string: "https://dev.cjnnow.com/api/add_employer")!
     private let viewerURL = URL(string: "https://dev.cjnnow.com/api/add_viewer")!
     
-   
+    func registerUser(_ selectedUserType : String) async {
+        if selectedUserType == "Viewer"{
+           
+                await registerViewer()
+            if viewerResponse?.responseStatus == false {
+                print("dslakfj")
+            }
+            
+        }
+        else if selectedUserType == "Employer" {
+           
+               await registerEmployer()
+            
+        }
+        else if selectedUserType == "Candidate" {
+           
+               await registerCandidate()
+            
+            
+        }
+        
+    }
     
-    func registerViewer()  {
+    func registerViewer() async  {
         
         let payload: [String: AnyHashable] = ["viewer_name": viewerName, "country_code": viewerCountryCode, "viewer_phone": viewerPhone, "viewer_email": viewerEmail, "viewer_pass": viewerPass]
 
@@ -148,60 +89,33 @@ class RegistrationViewModel: ObservableObject {
         request.setValue("987654321", forHTTPHeaderField: "apikey")
         request.httpBody = jsonData
 //
-//        do {
-//            let (data, _) = try await URLSession.shared.data(for: request)
-//            
-//                let responseObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//                print("\(responseObject)")
-//           
-//        } catch {
-//            print(error)
-//        }
-//        
-        
-//         Execute the URL request
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-
-            // Check for errors in the response
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-
-            // Ensure data is received
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-
-            // Print the raw response data
-            if let rawResponse = String(data: data, encoding: .utf8) {
-                print("Raw response data: \(rawResponse)")
-            } else {
-                print("Unable to convert response data to string.")
-            }
-
-            // Parse the JSON response
-            do {
-                let responseObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print("Parsed response: \(responseObject)")
-            } catch {
-                // Print detailed error information
-                print("JSON parsing error: \(error.localizedDescription)")
-                let nsError = error as NSError
-                print("Error Code: \(nsError.code)")
-                print("Error Domain: \(nsError.domain)")
-                if let debugDescription = nsError.userInfo[NSDebugDescriptionErrorKey] as? String {
-                    print("Debug Description: \(debugDescription)")
-                }
-            }
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            let responseObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            print("\(responseObject)")
+            
+            let decodedResponse = try JSONDecoder().decode(ViewerResponse.self, from: data)
+                    switch decodedResponse.responseMessage {
+                    case .data(let data):
+                        print("Success! Data received:")
+                        viewerResponse = decodedResponse
+                        print(data)
+                    case .errors(let errors):
+                        print("Error! Issues found:")
+                        if let emailErrors = errors.viewerEmail {
+                            print("Email Errors: \(emailErrors.joined(separator: ", "))")
+                        }
+                        if let passErrors = errors.viewerPass {
+                            print("Password Errors: \(passErrors.joined(separator: ", "))")
+                        }
+                    }
+        } catch {
+            print(error)
         }
-
-        // Start the task
-        task.resume()
     }
     
-    func registerEmployer() {
+    func registerEmployer() async {
         
         let payload: [String: AnyHashable] = [
             "employer_name": employerName,
@@ -232,47 +146,37 @@ class RegistrationViewModel: ObservableObject {
         request.setValue("987654321" , forHTTPHeaderField: "apikey")
         request.httpBody = jsonData
         
-        // Execute the URL request
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
             
-            // Check for errors in the response
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            // Ensure data is received
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            // Print the raw response data
-            if let rawResponse = String(data: data, encoding: .utf8) {
-                print("Raw response data: \(rawResponse)")
-            } else {
-                print("Unable to convert response data to string.")
-            }
-            
-            // Parse the JSON response
-            do {
                 let responseObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print("Parsed response: \(responseObject)")
-            } catch {
-                // Print detailed error information
-                print("JSON parsing error: \(error.localizedDescription)")
-                let nsError = error as NSError
-                print("Error Code: \(nsError.code)")
-                print("Error Domain: \(nsError.domain)")
-                if let debugDescription = nsError.userInfo[NSDebugDescriptionErrorKey] as? String {
-                    print("Debug Description: \(debugDescription)")
-                }
-            }
+                print("\(responseObject)")
+
+            
+            let decodedResponse = try JSONDecoder().decode(EmployerResponse.self, from: data)
+//                    switch decodedResponse.responseMessage {
+//                    case .data(let data):
+//                        print("Success! Data received:")
+//                        print(data)
+//                        employerResponse = decodedResponse
+//                        
+//                    case .errors(let errors):
+//                        print("Error! Issues found:")
+//                        if let emailErrors = errors.employerEmail {
+//                            print("Email Errors: \(emailErrors.joined(separator: ", "))")
+//                        }
+//                        if let passErrors = errors.employerPass {
+//                            print("Password Errors: \(passErrors.joined(separator: ", "))")
+//                        }
+//                        print(errors)
+//                    }
+            print(decodedResponse)
+           
+        } catch {
+            print(error)
         }
-        
-        // Start the task
-        task.resume()
     }
+        
     
     func registerCandidate() async {
             
@@ -311,57 +215,32 @@ class RegistrationViewModel: ObservableObject {
         request.setValue("987654321" , forHTTPHeaderField: "apikey")
         request.httpBody = jsonData
         
-        
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            
-//            
-//            if let error = error {
-//                print("Error: \(error.localizedDescription)")
-//                return
-//            }
-//            
-//            
-//            guard let data = data else {
-//                print("No data received")
-//                return
-//            }
-//            
-//            
-//            if let rawResponse = String(data: data, encoding: .utf8) {
-//                print("Raw response data: \(rawResponse)")
-//            } else {
-//                print("Unable to convert response data to string.")
-//            }
-//            
-//            
-//            do {
-//                let responseObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//                print("Parsed response: \(responseObject)")
-//            } catch {
-//                
-//                print("JSON parsing error: \(error.localizedDescription)")
-//                let nsError = error as NSError
-//                print("Error Code: \(nsError.code)")
-//                print("Error Domain: \(nsError.domain)")
-//                if let debugDescription = nsError.userInfo[NSDebugDescriptionErrorKey] as? String {
-//                    print("Debug Description: \(debugDescription)")
-//                }
-//            }
-//        }
-//        
-//        
-//        task.resume()
-        
-        do{
-            let (data,_) = try await URLSession.shared.data(for: request)
-            let res = try JSONDecoder().decode(CandidateResponse.self, from: data)
-            print("response \(res)")
-            DispatchQueue.main.async {
-                self.candidateRegistrationResponse = res
-            }
-        } catch{
-            print("Error: \(error)")
+
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+                let responseObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print("\(responseObject)")
+            
+            let decodedResponse = try JSONDecoder().decode(CandidateResponse.self, from: data)
+                    switch decodedResponse.responseMessage {
+                    case .data(let data):
+                        print("Success! Data received:")
+                        print(data)
+                    case .errors(let errors):
+                        print("Error! Issues found:")
+                        if let emailErrors = errors.candidateEmail {
+                            print("Email Errors: \(emailErrors.joined(separator: ", "))")
+                        }
+                        if let passErrors = errors.candidatePass {
+                            print("Password Errors: \(passErrors.joined(separator: ", "))")
+                        }
+                    }
+           
+        } catch {
+            print(error)
         }
+
         
     }
 

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LiveShowView: View {
+    @Environment(\.presentationMode) private var presentationMode :Binding<PresentationMode>
     var body: some View {
                 VStack(alignment: .leading, spacing: 10) {
                     ScrollView(.vertical, showsIndicators: false){
@@ -25,7 +26,17 @@ struct LiveShowView: View {
                 }
                 .padding()
                 .navigationTitle("Live Show")
-                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                    ToolbarItem(placement:.topBarLeading){
+                        Button{
+                            presentationMode.wrappedValue.dismiss()
+                        } label:{
+                            Image(systemName: "arrowshape.backward.circle.fill")
+                                .foregroundStyle(Color.accentColor)
+                                .scaleEffect(1.5)
+                        }
+                    }
+                })                .navigationBarTitleDisplayMode(.inline)
     }
     
     private func headerView() -> some View {

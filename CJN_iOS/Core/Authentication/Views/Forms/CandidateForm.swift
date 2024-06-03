@@ -37,11 +37,7 @@ struct CandidateForm: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(8)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 8)
-//                        .stroke(Color.black.opacity(0.3), lineWidth: 1)
-//                )
-//                .shadow(color: Color.blue.opacity(0.4), radius: 4, x: 0, y: 2)
+
             }
            
 
@@ -62,7 +58,7 @@ struct CandidateForm: View {
                 Text("Candidate's Date Of Birth ")
                     .font(.headline)
                     
-                DatePicker("DOB", selection: $registrationViewModel.candidateDateOfBirth, displayedComponents: .date)
+                DatePicker("", selection: $registrationViewModel.candidateDateOfBirth, displayedComponents: .date)
                     .foregroundStyle(Color.accentColor)
                     .datePickerStyle(CompactDatePickerStyle())
                     .padding()
