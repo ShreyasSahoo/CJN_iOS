@@ -22,6 +22,15 @@ struct EmployerForm: View {
        
         
             Form {
+                if !registrationViewModel.validationMessages.isEmpty {
+                                    Section {
+                                        
+                                        Text(registrationViewModel.validationMessages.first!)
+                                                .foregroundColor(.red)
+                                        
+                                    }
+                                }
+                
                 TextFieldWithLabel(label: "Name", placeholder: "Name", text: $registrationViewModel.employerName)
 
                 

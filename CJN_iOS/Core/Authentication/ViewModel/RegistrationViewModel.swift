@@ -45,27 +45,135 @@ class RegistrationViewModel: ObservableObject {
     @Published var candidateSkills = ""
     @Published var candidateExperience = ""
     
+    
+    
     private let candidateURL = URL(string: "https://dev.cjnnow.com/api/create_candidate_profile")!
     private let employerURL = URL(string: "https://dev.cjnnow.com/api/add_employer")!
     private let viewerURL = URL(string: "https://dev.cjnnow.com/api/add_viewer")!
     
+    @Published var validationMessages: [String] = []
+    
+    func validateViewerForm() -> Bool {
+        validationMessages.removeAll()
+        
+        if viewerName.isEmpty {
+            validationMessages.append("Name is required.")
+        }
+        
+        if viewerEmail.isEmpty || !isValidEmail(viewerEmail) {
+            validationMessages.append("Enter a valid Email.")
+        }
+
+        if viewerPass.count < 6 {
+            validationMessages.append("Password should atleast have 6 characters")
+        }
+        if viewerPhone.count != 10 {
+            validationMessages.append("Enter a Valid Phone Number")
+        }
+        
+        return validationMessages.isEmpty
+    }
+    
+    func validateEmployerForm() -> Bool {
+        
+        validationMessages.removeAll()
+        
+        if employerName.isEmpty {
+            validationMessages.append("Name is required.")
+        }
+        
+        if employerCompanyName.isEmpty {
+            validationMessages.append("Company Name is required.")
+        }
+        if employerPostName.isEmpty {
+            validationMessages.append("Post Name is required.")
+        }
+        
+        if employerEmail.isEmpty || !isValidEmail(employerEmail) {
+            validationMessages.append("Enter a valid Email.")
+        }
+        
+
+        if employerPass.count < 6 {
+            validationMessages.append("Password should atleast have 6 characters")
+        }
+        if employerPhone.count != 10 {
+            validationMessages.append("Enter a Valid Phone Number")
+        }
+        
+        
+        return validationMessages.isEmpty
+    }
+    
+    func validateCandidateForm() -> Bool {
+        
+        validationMessages.removeAll()
+        
+        if candidateName.isEmpty {
+            validationMessages.append("Name is required.")
+        }
+        
+        if candidateDepartment.isEmpty {
+            validationMessages.append("Candidate Department is required.")
+        }
+        if candidateCollegeCode.isEmpty {
+            validationMessages.append("College Code is required.")
+        }
+        
+        if candidateHighestQualification.isEmpty {
+            validationMessages.append("Highest Qualification is required.")
+        }
+        
+        if candidateSkills.isEmpty {
+            validationMessages.append("Skills are required.")
+        }
+        
+        if candidateEmail.isEmpty || !isValidEmail(employerEmail) {
+            validationMessages.append("Enter a valid Email.")
+        }
+        
+        if candidatePass.count < 6 {
+            validationMessages.append("Password should atleast have 6 characters")
+        }
+        if employerPhone.count != 10 {
+            validationMessages.append("Enter a Valid Phone Number")
+        }
+        
+        
+        return validationMessages.isEmpty
+    }
+
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+    }
+
+    
+    
+    
     func registerUser(_ selectedUserType : String) async {
         if selectedUserType == "Viewer"{
-           
+            if validateViewerForm() {
                 await registerViewer()
             if viewerResponse?.responseStatus == false {
                 print("dslakfj")
             }
+                                    }
+           
             
         }
         else if selectedUserType == "Employer" {
-           
-               await registerEmployer()
+            if validateEmployerForm() {
+                await registerEmployer()
+            }
             
         }
         else if selectedUserType == "Candidate" {
-           
-               await registerCandidate()
+            if validateEmployerForm() {
+                await registerCandidate()
+            }
             
             
         }

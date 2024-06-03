@@ -12,15 +12,25 @@ struct ViewerForm: View {
    
     let phoneCodes: [String]
     @ObservedObject var registrationViewModel: RegistrationViewModel
+    
     var body: some View {
         VStack {
             Form() {
-                Section(header: Text("Viewer Information")) { // Add a header for the section
+                Section(header: Text("Viewer Information")) {
                     TextFieldWithLabel(label: "Name", placeholder: "Please enter the your name ", text: $registrationViewModel.viewerName)
                     TextFieldWithLabel(label: "Email", placeholder: "Please enter the viewer email *", text: $registrationViewModel.viewerEmail)
                     SecureFieldWithLabel(password: $registrationViewModel.viewerPass)
                     PhoneFieldWithLabel(label: "Phone Number", placeholder: "Phone Number", phone: $registrationViewModel.viewerPhone , selectedPhoneCode: $registrationViewModel.viewerCountryCode, phoneCodes: phoneCodes)
                 }
+                if !registrationViewModel.validationMessages.isEmpty {
+                                    Section {
+                                        ForEach(registrationViewModel.validationMessages, id: \.self) { message in
+                                            Text(message)
+                                                .foregroundColor(.red)
+                                        }
+                                    }
+                                }
+                
             }
             .frame(maxWidth: .infinity)
             .scrollContentBackground(.hidden)

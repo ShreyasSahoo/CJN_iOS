@@ -15,7 +15,14 @@ struct CandidateForm: View {
     var body: some View {
         Form() {
             
-            
+            if !registrationViewModel.validationMessages.isEmpty {
+                                Section {
+                                    
+                                    Text(registrationViewModel.validationMessages.first!)
+                                            .foregroundColor(.red)
+                                    
+                                }
+                            }
             
             TextFieldWithLabel(label: "Candidate Name", placeholder: "Candidate Name *", text: $registrationViewModel.candidateName)
 

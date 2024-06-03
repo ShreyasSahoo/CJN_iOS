@@ -19,6 +19,7 @@ struct LoginView: View {
     @State private var errorMessage: String?
     @State private var showLoginSuccess  = false
     @State private var showLoginError  = false
+    
 //    @State private var loginErrorMessage = ""
 //    
 //    private var shortPassword: Bool {
