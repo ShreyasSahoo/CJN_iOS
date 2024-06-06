@@ -12,19 +12,17 @@ struct TrainingView: View {
     var body: some View {
         GeometryReader  { geo in
             NavigationStack{
-                ScrollView{
+                    ScrollView{
                   
-                    SearchBarView(searchText: $searchText,width: geo.size.width)
+                        SearchBarView(searchText: $searchText,width: geo.size.width)
                     
                     
-                    VStack (alignment:.leading,spacing:16){
-                        ForEach(0..<4){ i in
-                            
+                        VStack (alignment:.leading,spacing:16){
+                            ForEach(0..<4){ i in
                             VStack(alignment:.leading){
                                 Text("UI/UX Courses \(i)")
                                     .font(.headline)
                                     .padding(.leading)
-                                
                                 
                                     ScrollView(.horizontal,showsIndicators: false) {
                                         HStack(spacing:16) {

@@ -17,6 +17,10 @@
 		B12079CF2BFEEC3800BA98C6 /* ViewerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */; };
 		B1375E7F2C098EC2005FF28E /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1375E7E2C098EC2005FF28E /* TrainingView.swift */; };
 		B1375E842C09A2B3005FF28E /* InterviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1375E832C09A2B3005FF28E /* InterviewView.swift */; };
+		B13847DC2C102D4800AAF89E /* AdvertisementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13847DB2C102D4800AAF89E /* AdvertisementModel.swift */; };
+		B13847DE2C102EBC00AAF89E /* AdvertisementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13847DD2C102EBC00AAF89E /* AdvertisementViewModel.swift */; };
+		B13847E02C103D6C00AAF89E /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13847DF2C103D6C00AAF89E /* DashboardModel.swift */; };
+		B13847E22C10408C00AAF89E /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13847E12C10408C00AAF89E /* DashboardViewModel.swift */; };
 		B14BCC062C0D88D60078B976 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14BCC052C0D88D60078B976 /* Constants.swift */; };
 		B14BCC092C0DA5950078B976 /* ViewerRegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14BCC082C0DA5950078B976 /* ViewerRegistrationResponse.swift */; };
 		B14BCC0B2C0DD07B0078B976 /* EmployerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14BCC0A2C0DD07B0078B976 /* EmployerResponse.swift */; };
@@ -52,6 +56,10 @@
 		B12079CE2BFEEC3800BA98C6 /* ViewerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerForm.swift; sourceTree = "<group>"; };
 		B1375E7E2C098EC2005FF28E /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		B1375E832C09A2B3005FF28E /* InterviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewView.swift; sourceTree = "<group>"; };
+		B13847DB2C102D4800AAF89E /* AdvertisementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementModel.swift; sourceTree = "<group>"; };
+		B13847DD2C102EBC00AAF89E /* AdvertisementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewModel.swift; sourceTree = "<group>"; };
+		B13847DF2C103D6C00AAF89E /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		B13847E12C10408C00AAF89E /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		B14BCC052C0D88D60078B976 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B14BCC082C0DA5950078B976 /* ViewerRegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerRegistrationResponse.swift; sourceTree = "<group>"; };
 		B14BCC0A2C0DD07B0078B976 /* EmployerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployerResponse.swift; sourceTree = "<group>"; };
@@ -91,8 +99,7 @@
 		B10DAF412C070618009E749B /* Job */ = {
 			isa = PBXGroup;
 			children = (
-				B10DAF422C070639009E749B /* JobDescription.swift */,
-				B10DAF442C07110D009E749B /* JobOffersView.swift */,
+				B19CDD202C117EA200655FCC /* Views */,
 			);
 			path = Job;
 			sourceTree = "<group>";
@@ -100,22 +107,18 @@
 		B10DAF462C07395B009E749B /* Assessment */ = {
 			isa = PBXGroup;
 			children = (
-				B10DAF472C073974009E749B /* AssessmentView.swift */,
-				B1D32EE82C0785ED00497691 /* AssessmentPassView.swift */,
-				B1D32EEA2C0788C400497691 /* AssessmentFailView.swift */,
-				B10DAF492C074FC2009E749B /* AssignmentHome.swift */,
-				B10DAF4B2C075369009E749B /* AssessmentPaymentView.swift */,
+				B19CDD212C117EB900655FCC /* Views */,
 			);
 			path = Assessment;
 			sourceTree = "<group>";
 		};
-		B12079C82BFE1E1E00BA98C6 /* ViewModel */ = {
+		B12079C82BFE1E1E00BA98C6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				B1F952222BFDA0B5007FF50E /* RegistrationViewModel.swift */,
 				B1F9521C2BFCBD7B007FF50E /* LoginViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B12079C92BFEEB3400BA98C6 /* Forms */ = {
@@ -144,21 +147,111 @@
 			path = Interview;
 			sourceTree = "<group>";
 		};
-		B14BCC072C0DA5790078B976 /* Model */ = {
+		B14BCC072C0DA5790078B976 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B14BCC082C0DA5950078B976 /* ViewerRegistrationResponse.swift */,
 				B14BCC0A2C0DD07B0078B976 /* EmployerResponse.swift */,
 				B14BCC0C2C0DDFC60078B976 /* CandidateRegistrationResponse.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B19CDD1A2C117E0F00655FCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1FB86182C04B88000EA6176 /* iPadUserdashView.swift */,
+				B1B44EC72C01A5F900D6B631 /* UserDashView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B19CDD1B2C117E3100655FCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B13847DB2C102D4800AAF89E /* AdvertisementModel.swift */,
+				B13847DF2C103D6C00AAF89E /* DashboardModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B19CDD1C2C117E4600655FCC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B13847DD2C102EBC00AAF89E /* AdvertisementViewModel.swift */,
+				B13847E12C10408C00AAF89E /* DashboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B19CDD1D2C117E6A00655FCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1FB861A2C04C17100EA6176 /* iPadLiveShowView.swift */,
+				B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B19CDD1E2C117E7800655FCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B1FB86122C049F8F00EA6176 /* FeedbackModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B19CDD1F2C117E8900655FCC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B1FB86102C049F5D00EA6176 /* FeedbackViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B19CDD202C117EA200655FCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B10DAF422C070639009E749B /* JobDescription.swift */,
+				B10DAF442C07110D009E749B /* JobOffersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B19CDD212C117EB900655FCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B10DAF492C074FC2009E749B /* AssignmentHome.swift */,
+				B1D32EEA2C0788C400497691 /* AssessmentFailView.swift */,
+				B1D32EE82C0785ED00497691 /* AssessmentPassView.swift */,
+				B10DAF472C073974009E749B /* AssessmentView.swift */,
+				B10DAF4B2C075369009E749B /* AssessmentPaymentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B19CDD222C117F1900655FCC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B19CDD232C117F2400655FCC /* Views */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B19CDD232C117F2400655FCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1B44ECC2C01E3D300D6B631 /* SplashScreenView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B1B44EC62C01A5E600D6B631 /* UserDashboard */ = {
 			isa = PBXGroup;
 			children = (
-				B1B44EC72C01A5F900D6B631 /* UserDashView.swift */,
-				B1FB86182C04B88000EA6176 /* iPadUserdashView.swift */,
+				B19CDD1C2C117E4600655FCC /* ViewModels */,
+				B19CDD1B2C117E3100655FCC /* Models */,
+				B19CDD1A2C117E0F00655FCC /* Views */,
 			);
 			path = UserDashboard;
 			sourceTree = "<group>";
@@ -166,10 +259,9 @@
 		B1B44EC92C01AD0200D6B631 /* LiveShow */ = {
 			isa = PBXGroup;
 			children = (
-				B1B44ECA2C01AD1300D6B631 /* LiveShowView.swift */,
-				B1FB86122C049F8F00EA6176 /* FeedbackModel.swift */,
-				B1FB86102C049F5D00EA6176 /* FeedbackViewModel.swift */,
-				B1FB861A2C04C17100EA6176 /* iPadLiveShowView.swift */,
+				B19CDD1F2C117E8900655FCC /* ViewModels */,
+				B19CDD1E2C117E7800655FCC /* Models */,
+				B19CDD1D2C117E6A00655FCC /* Views */,
 			);
 			path = LiveShow;
 			sourceTree = "<group>";
@@ -193,8 +285,8 @@
 		B1F9520A2BFCB520007FF50E /* CJN_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B1F952192BFCBD22007FF50E /* Core */,
-				B1B44ECC2C01E3D300D6B631 /* SplashScreenView.swift */,
+				B19CDD222C117F1900655FCC /* Base */,
+				B1F952192BFCBD22007FF50E /* Features */,
 				B1F57B302C0220B900420125 /* CJN_iOSApp.swift */,
 				B1F9520F2BFCB522007FF50E /* Assets.xcassets */,
 				B1F952112BFCB522007FF50E /* Preview Content */,
@@ -210,7 +302,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B1F952192BFCBD22007FF50E /* Core */ = {
+		B1F952192BFCBD22007FF50E /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				B1375E852C09A2B9005FF28E /* Interview */,
@@ -221,15 +313,16 @@
 				B1B44EC62C01A5E600D6B631 /* UserDashboard */,
 				B1F9521A2BFCBD30007FF50E /* Authentication */,
 				B14BCC052C0D88D60078B976 /* Constants.swift */,
+				B12079C92BFEEB3400BA98C6 /* Forms */,
 			);
-			path = Core;
+			path = Features;
 			sourceTree = "<group>";
 		};
 		B1F9521A2BFCBD30007FF50E /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				B14BCC072C0DA5790078B976 /* Model */,
-				B12079C82BFE1E1E00BA98C6 /* ViewModel */,
+				B14BCC072C0DA5790078B976 /* Models */,
+				B12079C82BFE1E1E00BA98C6 /* ViewModels */,
 				B1F9521B2BFCBD44007FF50E /* Views */,
 			);
 			path = Authentication;
@@ -242,7 +335,6 @@
 				B1FB86142C04A30100EA6176 /* iPadLoginView.swift */,
 				B1FB86162C04B5F400EA6176 /* iPadRegistrationView.swift */,
 				B1F9521E2BFCCA4D007FF50E /* RegistrationView.swift */,
-				B12079C92BFEEB3400BA98C6 /* Forms */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +421,8 @@
 				B14BCC0D2C0DDFC60078B976 /* CandidateRegistrationResponse.swift in Sources */,
 				B10DAF4A2C074FC2009E749B /* AssignmentHome.swift in Sources */,
 				B1B44EC82C01A5F900D6B631 /* UserDashView.swift in Sources */,
+				B13847DC2C102D4800AAF89E /* AdvertisementModel.swift in Sources */,
+				B13847E02C103D6C00AAF89E /* DashboardModel.swift in Sources */,
 				B12079CB2BFEEBF700BA98C6 /* CandidateForm.swift in Sources */,
 				B10DAF4C2C075369009E749B /* AssessmentPaymentView.swift in Sources */,
 				B1B44ECD2C01E3D300D6B631 /* SplashScreenView.swift in Sources */,
@@ -340,12 +434,14 @@
 				B14BCC092C0DA5950078B976 /* ViewerRegistrationResponse.swift in Sources */,
 				B1D32EE92C0785ED00497691 /* AssessmentPassView.swift in Sources */,
 				B1F9521D2BFCBD7B007FF50E /* LoginViewModel.swift in Sources */,
+				B13847E22C10408C00AAF89E /* DashboardViewModel.swift in Sources */,
 				B1F952232BFDA0B5007FF50E /* RegistrationViewModel.swift in Sources */,
 				B10DAF432C070639009E749B /* JobDescription.swift in Sources */,
 				B1375E842C09A2B3005FF28E /* InterviewView.swift in Sources */,
 				B1FB86132C049F8F00EA6176 /* FeedbackModel.swift in Sources */,
 				B1F9521F2BFCCA4D007FF50E /* RegistrationView.swift in Sources */,
 				B1FB86112C049F5E00EA6176 /* FeedbackViewModel.swift in Sources */,
+				B13847DE2C102EBC00AAF89E /* AdvertisementViewModel.swift in Sources */,
 				B14BCC062C0D88D60078B976 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CJN_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = U5BJUGD7KV;
+				DEVELOPMENT_TEAM = HHG4GY25AX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -496,7 +592,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shreyas.CJN-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CJN.CJN-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

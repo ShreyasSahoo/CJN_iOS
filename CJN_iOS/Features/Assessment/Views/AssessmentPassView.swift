@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AssessmentPassView: View {
-    @State private var Score = Int()
+    @State private var Score = 0
     var body: some View {
         GeometryReader{ geo in
             NavigationStack{

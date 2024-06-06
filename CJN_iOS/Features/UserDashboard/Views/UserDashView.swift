@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct UserDashView: View {
+    @StateObject private var advertisementViewModel = AdvertisementViewModel()
+    @StateObject private var dashboardViewModel = DashboardViewModel()
     var body: some View {
         GeometryReader{ geo in
-            NavigationStack {
+            NavigationStack { 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
                         
@@ -28,14 +30,19 @@ struct UserDashView: View {
                                     ForEach(1..<10){ _ in
                                         JobOfferView(width: geo.size.width*3/4)
                                     }
-                                }
+                                } 
                                 
                             }
                         
                         
                     }
                     .padding()
-                    
+                    .onAppear{
+                        Task{
+                            await advertisementViewModel.fetchAdvertisements()
+                            await dashboardViewModel.fetchDashboard("1") 
+                        }
+                    }
                 }
             }
             .navigationTitle("")
